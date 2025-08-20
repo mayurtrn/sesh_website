@@ -6310,6 +6310,166 @@ const PrivacyPolicy = () => {
 //     </div>
 //   );
 // };
+// const Contact = () => {
+//   const navigate = useNavigate();
+//   const [formData, setFormData] = useState({
+//     firstName: '',
+//     lastName: '',
+//     email: '',
+//     phoneNumber: '',
+//     category: 'Bugfix',
+//     description: ''
+//   });
+//   const [isSubmitted, setIsSubmitted] = useState(false);
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData(prev => ({ ...prev, [name]: value }));
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log('Form submitted:', formData);
+//     setIsSubmitted(true);
+//   };
+
+//   if (isSubmitted) {
+//     return (
+//       <div className="min-h-screen bg-white py-8 px-4 sm:px-6 lg:px-8 font-nunito">
+//         <div className="max-w-4xl mx-auto">
+//           <button
+//             onClick={() => navigate('/')}
+//             className="mb-6 text-purple-500 hover:text-purple-600 text-lg font-bold font-nunito"
+//           >
+//             ← Back to Home
+//           </button>
+//           <h1 className="text-3xl sm:text-4xl font-bold text-[#4A4A4A] mb-6 font-nunito">
+//             Contact Us
+//           </h1>
+//           <div className="bg-green-100 rounded-lg p-6 text-center">
+//             <p className="text-[#4A4A4A] text-lg font-nunito">
+//               Form successfully submitted!
+//             </p>
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="min-h-screen bg-white py-8 px-4 sm:px-6 lg:px-8 font-nunito">
+//       <div className="max-w-4xl mx-auto">
+//         <button
+//           onClick={() => navigate('/')}
+//           className="mb-6 text-purple-500 hover:text-purple-600 text-lg font-bold font-nunito"
+//         >
+//           ← Back to Home
+//         </button>
+//         <h1 className="text-3xl sm:text-4xl font-bold text-[#4A4A4A] mb-6 font-nunito">
+//           Contact Us
+//         </h1>
+//         <form onSubmit={handleSubmit} className="space-y-6">
+//           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+//             <div>
+//               <label htmlFor="firstName" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
+//                 First Name
+//               </label>
+//               <input
+//                 type="text"
+//                 id="firstName"
+//                 name="firstName"
+//                 value={formData.firstName}
+//                 onChange={handleInputChange}
+//                 className="w-full px-4 py-3 bg-gray-200 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito"
+//                 required
+//               />
+//             </div>
+//             <div>
+//               <label htmlFor="lastName" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
+//                 Last Name
+//               </label>
+//               <input
+//                 type="text"
+//                 id="lastName"
+//                 name="lastName"
+//                 value={formData.lastName}
+//                 onChange={handleInputChange}
+//                 className="w-full px-4 py-3 bg-gray-200 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito"
+//                 required
+//               />
+//             </div>
+//           </div>
+//           <div>
+//             <label htmlFor="email" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
+//               Email
+//             </label>
+//             <input
+//               type="email"
+//               id="email"
+//               name="email"
+//               value={formData.email}
+//               onChange={handleInputChange}
+//               className="w-full px-4 py-3 bg-gray-200 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito"
+//               required
+//             />
+//           </div>
+//           <div>
+//             <label htmlFor="phoneNumber" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
+//               Phone Number
+//             </label>
+//             <input
+//               type="tel"
+//               id="phoneNumber"
+//               name="phoneNumber"
+//               value={formData.phoneNumber}
+//               onChange={handleInputChange}
+//               className="w-full px-4 py-3 bg-gray-200 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito"
+//             />
+//           </div>
+//           <div>
+//             <label htmlFor="category" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
+//               Category
+//             </label>
+//             <select
+//               id="category"
+//               name="category"
+//               value={formData.category}
+//               onChange={handleInputChange}
+//               className="w-full px-4 py-3 bg-gray-200 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito"
+//             >
+//               <option value="Bugfix">Bugfix</option>
+//               <option value="Report">Report</option>
+//               <option value="Delete Account">Delete Account</option>
+//               <option value="Other">Other</option>
+//             </select>
+//           </div>
+//           <div>
+//             <label htmlFor="description" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
+//               Description
+//             </label>
+//             <textarea
+//               id="description"
+//               name="description"
+//               value={formData.description}
+//               onChange={handleInputChange}
+//               rows="5"
+//               className="w-full px-4 py-3 bg-gray-200 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito"
+//               required
+//             />
+//           </div>
+//           <div>
+//             <button
+//               type="submit"
+//               className="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition-colors font-nunito"
+//             >
+//               Submit
+//             </button>
+//           </div>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
 const Contact = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -6317,20 +6477,77 @@ const Contact = () => {
     lastName: '',
     email: '',
     phoneNumber: '',
-    category: 'Bugfix',
+    category: '', // Initialize as empty until categories are loaded
     description: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(null);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('https://django.sesh.one/api/categories/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Failed to fetch categories');
+        }
+        const data = await response.json();
+        setCategories(data.categories);
+        // Set default category to the first one if available
+        if (data.categories.length > 0) {
+          setFormData(prev => ({ ...prev, category: data.categories[0].name }));
+        }
+      } catch (err) {
+        console.error('Error fetching categories:', err);
+        setError('Failed to load categories. Please try again.');
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
+    setError(null);
+
+    const selectedCategory = categories.find(cat => cat.name === formData.category);
+    const payload = {
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      phone_number: formData.phoneNumber,
+      category: selectedCategory ? selectedCategory.id : null,
+      description: formData.description
+    };
+
+    try {
+      const response = await fetch('https://django.sesh.one/api/submissions/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
+      const data = await response.json();
+      console.log('Form submitted successfully:', data);
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error('Error submitting form:', err);
+      setError('Failed to submit form. Please try again.');
+    }
   };
 
   if (isSubmitted) {
@@ -6368,6 +6585,11 @@ const Contact = () => {
         <h1 className="text-3xl sm:text-4xl font-bold text-[#4A4A4A] mb-6 font-nunito">
           Contact Us
         </h1>
+        {error && (
+          <div className="bg-red-100 rounded-lg p-4 mb-6 text-center">
+            <p className="text-red-700 text-lg font-nunito">{error}</p>
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
@@ -6436,11 +6658,17 @@ const Contact = () => {
               value={formData.category}
               onChange={handleInputChange}
               className="w-full px-4 py-3 bg-gray-200 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito"
+              disabled={categories.length === 0}
             >
-              <option value="Bugfix">Bugfix</option>
-              <option value="Report">Report</option>
-              <option value="Delete Account">Delete Account</option>
-              <option value="Other">Other</option>
+              {categories.length === 0 ? (
+                <option value="">Loading categories...</option>
+              ) : (
+                categories.map(category => (
+                  <option key={category.id} value={category.name}>
+                    {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
+                  </option>
+                ))
+              )}
             </select>
           </div>
           <div>
@@ -6461,6 +6689,7 @@ const Contact = () => {
             <button
               type="submit"
               className="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition-colors font-nunito"
+              disabled={categories.length === 0}
             >
               Submit
             </button>
@@ -6470,7 +6699,6 @@ const Contact = () => {
     </div>
   );
 };
-
 const App = () => {
   const [userCount, setUserCount] = useState(999999);
   const [animatingIndices, setAnimatingIndices] = useState(new Set());
