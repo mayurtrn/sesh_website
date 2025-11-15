@@ -8305,25 +8305,10 @@ const FlipCard = ({ digit, isAnimating, isShuffling }) => {
   const displayDigit = isShuffling ? shuffleDigit : (isAnimating ? nextDigit : currentDigit);
 
   return (
-    <div className="relative flex-1 h-16 sm:h-20 md:h-24 lg:h-28 bg-purple-500 rounded-md overflow-hidden flex items-center justify-center">
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-nunito transition-all duration-100 leading-none">
-          {displayDigit}
-        </span>
-      </div>
-      <div className={`absolute inset-0 ${isAnimating ? 'animate-flip' : ''}`}>
-        <div className="absolute top-0 left-0 right-0 h-1/2 bg-purple-500 flex items-end justify-center overflow-hidden">
-          <span className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-nunito transform translate-y-1/2 leading-none">
-            {displayDigit}
-          </span>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-purple-500 flex items-start justify-center overflow-hidden">
-          <span className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-nunito transform -translate-y-1/2 leading-none">
-            {displayDigit}
-          </span>
-        </div>
-      </div>
-      <div className="absolute top-1/2 left-0 right-0 h-px bg-purple-600 transform -translate-y-1/2 z-10"></div>
+    <div className="relative flex-1 h-16 sm:h-20 md:h-24 lg:h-28 rounded-md flex items-center justify-center" style={{ backgroundColor: '#A659FF' }}>
+      <span className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-nunito z-50 relative">
+        {displayDigit}
+      </span>
     </div>
   );
 };
@@ -8686,9 +8671,6 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
-                Email
-              </label>
               <input
                 type="email"
                 id="email"
@@ -8702,9 +8684,6 @@ const ContactForm = () => {
               />
             </div>
             <div>
-              <label htmlFor="phoneNumber" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
-                Phone Number
-              </label>
               <input
                 type="tel"
                 id="phoneNumber"
@@ -8717,9 +8696,6 @@ const ContactForm = () => {
               />
             </div>
             <div>
-              <label htmlFor="category" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
-                Category
-              </label>
               <select
                 id="category"
                 name="category"
@@ -8739,9 +8715,6 @@ const ContactForm = () => {
             </div>
           </div>
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
-              Description
-            </label>
             <textarea
               id="description"
               name="description"
@@ -8919,7 +8892,7 @@ const Contact = () => {
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
-              Email
+              
             </label>
             <input
               type="email"
@@ -8933,7 +8906,7 @@ const Contact = () => {
           </div>
           <div>
             <label htmlFor="phoneNumber" className="block text-sm font-medium text-[#4A4A4A] mb-2 font-nunito">
-              Phone Number
+              
             </label>
             <input
               type="tel"
@@ -9187,9 +9160,13 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden font-nunito">
+    <div className="h-screen bg-white relative overflow-hidden font-nunito">
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        body {
+          overflow: hidden;
+        }
 
         @keyframes flip {
           0% { transform: rotateX(0deg); }
@@ -9282,43 +9259,6 @@ const App = () => {
         />
       )}
 
-      {/* Top Navigation Bar - Full Width with Grey Background */}
-      <nav className="w-full bg-gray-100 py-6 px-4 sm:px-8 relative z-20">
-        <div className="w-full flex items-center justify-center gap-12 sm:gap-20 md:gap-32 lg:gap-48">
-          <button
-            onClick={() => setActiveSection('home')}
-            className={`transition-colors duration-300 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-nunito ${
-              activeSection === 'home' ? 'text-[#4A4A4A] font-bold' : 'text-gray-400 hover:text-[#4A4A4A]'
-            }`}
-          >
-            <em>HOME</em>
-          </button>
-          <button
-            onClick={() => setActiveSection('howToSesh')}
-            className={`transition-colors duration-300 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-nunito ${
-              activeSection === 'howToSesh' ? 'text-[#4A4A4A] font-bold' : 'text-gray-400 hover:text-[#4A4A4A]'
-            }`}
-          >
-            <em>HOW TO SESH?</em>
-          </button>
-          <button
-            onClick={() => setActiveSection('aboutUs')}
-            className={`transition-colors duration-300 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-nunito ${
-              activeSection === 'aboutUs' ? 'text-[#4A4A4A] font-bold' : 'text-gray-400 hover:text-[#4A4A4A]'
-            }`}
-          >
-            <em>ABOUT US</em>
-          </button>
-          <button
-            onClick={() => setActiveSection('contact')}
-            className={`transition-colors duration-300 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-nunito ${
-              activeSection === 'contact' ? 'text-[#4A4A4A] font-bold' : 'text-gray-400 hover:text-[#4A4A4A]'
-            }`}
-          >
-            <em>CONTACT</em>
-          </button>
-        </div>
-      </nav>
 
       {/* Logo and Tagline Section - Below Nav Bar */}
       <div className="w-full bg-white py-6 relative z-10">
@@ -9337,45 +9277,107 @@ const App = () => {
         </div>
       </div>
 
-      <div className="py-3 sm:py-4 relative z-10 w-full px-12 sm:px-24 md:px-32 lg:px-48 xl:px-64">
+      <div className="py-3 sm:py-4 relative z-10 w-full" style={{ paddingLeft: '10px', paddingRight: '10px' }}>
 
 
         {/* HOME SECTION */}
         {activeSection === 'home' && (
           <>
-        <h2 className="text-[#4A4A4A] text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-nunito text-center"><i>JOIN THE RACE TO 1 MILLION</i></h2>
-        <div className="w-full mb-4 sm:mb-6">
-          <div style={{ backgroundColor: '#EFEFEF' }} className="rounded-xl p-5 sm:p-6 md:p-8">
-            <div className="p-8 sm:p-10 md:p-12 mb-3 sm:mb-4">
-              <p className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-nunito text-center">
-                We are going to launch the next phase of the app once we hit <span className="font-bold">1 million users</span>. Help us get there by inviting your friends, family, and neighbors to download the app!
-              </p>
-            </div>
-            <div className="flex justify-center items-center space-x-2 sm:space-x-3 md:space-x-4 min-h-[80px] sm:min-h-[100px] md:min-h-[120px] lg:min-h-[140px]">
+        <h2 className="text-[#4A4A4A] text-2xl sm:text-3xl md:text-4xl font-bold mb-6 font-nunito text-center"><i>JOIN THE RACE TO 1 MILLION</i></h2>
+
+        {/* Text and Counter Row */}
+        <div className="w-full mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Text Container */}
+          <div className="bg-gray-100 rounded-xl p-6 sm:p-8 flex items-center justify-center">
+            <p className="text-[#4A4A4A] text-base sm:text-lg md:text-xl font-nunito">
+              We are going to launch the next phase of the app once we hit <span className="font-bold">1 million users</span>. help us get there by inviting your friends, family, and neighbors to download the app!
+            </p>
+          </div>
+
+          {/* Counter Container */}
+          <div className="bg-gray-100 rounded-xl flex justify-center items-center" style={{ padding: '10px' }}>
+            <div className="flex justify-center items-center space-x-2 sm:space-x-3 w-full">
               {renderFlipCounter()}
             </div>
           </div>
         </div>
 
-        {/* App Store Buttons */}
-        <div className="w-full mb-4 sm:mb-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
-            <img
-              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-              alt="Download on the App Store"
-              className="h-12 sm:h-14 md:h-16 lg:h-20 cursor-pointer hover:opacity-80 transition-opacity"
-            />
-            <a
-              href="https://play.google.com/store/apps/details?id=com.therealnetworkssss.sesh"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="/google-play-badge.png"
-                alt="Get it on Google Play"
-                className="h-12 sm:h-14 md:h-16 lg:h-20 cursor-pointer hover:opacity-80 transition-opacity"
-              />
-            </a>
+        {/* How to Sesh Cards, Banners and Form Layout */}
+        <div className="w-full mb-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ minHeight: '500px' }}>
+            {/* Left Column: Cards and Banners */}
+            <div className="flex flex-col gap-4 h-full">
+              {/* How to Sesh Cards */}
+              <div className="grid grid-cols-3 gap-4 flex-1">
+                {/* SWIPE Card */}
+                <div className="flex flex-col items-center h-full">
+                  <h3 className="text-[#4A4A4A] text-xl sm:text-2xl font-bold mb-3 text-center font-nunito"><em>SWIPE</em></h3>
+                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center w-full flex-1">
+                    <div className="flex gap-3 mb-4">
+                      <img src="/Onboarding_Swipe_Left.svg" alt="Swipe Left" className="w-16 h-16 sm:w-20 sm:h-20" />
+                      <img src="/Onboarding_Swipe_Right.svg" alt="Swipe Right" className="w-16 h-16 sm:w-20 sm:h-20" />
+                    </div>
+                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-sm sm:text-base">swipe left for no and right for yes</p>
+                  </div>
+                </div>
+
+                {/* INVITE Card */}
+                <div className="flex flex-col items-center h-full">
+                  <h3 className="text-[#4A4A4A] text-xl sm:text-2xl font-bold mb-3 text-center font-nunito"><em>INVITE</em></h3>
+                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center w-full flex-1">
+                    <div className="mb-4">
+                      <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-16 h-16 sm:w-20 sm:h-20" />
+                    </div>
+                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-sm sm:text-base">swipe left for no and right for yes</p>
+                  </div>
+                </div>
+
+                {/* PLAN Card */}
+                <div className="flex flex-col items-center h-full">
+                  <h3 className="text-[#4A4A4A] text-xl sm:text-2xl font-bold mb-3 text-center font-nunito"><em>PLAN</em></h3>
+                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center w-full flex-1">
+                    <div className="mb-4">
+                      <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-16 h-16 sm:w-20 sm:h-20" />
+                    </div>
+                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-sm sm:text-base">swipe left for no and right for yes</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* App Store Banners */}
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pb-4">
+                <a
+                  href="https://apps.apple.com/us/app/the-sesh-app/id1671947382"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                    alt="Download on the App Store"
+                    className="h-16 sm:h-20 md:h-24 cursor-pointer hover:opacity-80 transition-opacity"
+                  />
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.therealnetworkssss.sesh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="/google-play-badge.png"
+                    alt="Get it on Google Play"
+                    className="h-16 sm:h-20 md:h-24 cursor-pointer hover:opacity-80 transition-opacity"
+                  />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Contact Form */}
+            <div className="flex flex-col items-center h-full">
+              <h3 className="text-[#4A4A4A] text-lg font-bold mb-2 text-center font-nunito"><em>CONTACT</em></h3>
+              <div className="bg-gray-100 rounded-xl p-4 w-full flex-1">
+                <ContactForm />
+              </div>
+            </div>
           </div>
         </div>
           </>
@@ -9385,19 +9387,19 @@ const App = () => {
         {activeSection === 'aboutUs' && (
           <>
         <h2 className="text-[#4A4A4A] text-2xl sm:text-3xl md:text-4xl font-bold mb-6 font-nunito text-center"><i>ABOUT US</i></h2>
-        <div className="w-full mb-6">
-          <div style={{ backgroundColor: '#EFEFEF' }} className="rounded-xl p-8 sm:p-10 md:p-12 min-h-[300px] sm:min-h-[350px] md:min-h-[400px] flex flex-col justify-center">
+        <div className="w-full mb-6 h-[400px] sm:h-[420px] md:h-[450px]">
+          <div className="bg-gray-100 rounded-xl p-8 sm:p-10 md:p-12 h-full flex flex-col justify-center">
             <p className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-nunito mb-4 sm:mb-6">
-              <span className="font-bold italic text-purple-400">SESH</span>, short for "session", is part of the phrase "great <span className="font-bold italic text-purple-400">SESH</span> " and is exchanged among friends after a great hangout. we are focused on bringing people together in real life, not just online.
+              <span className="font-bold italic text-[#A659FF]">SESH</span>, short for "session", is part of the phrase "great <span className="font-bold italic text-[#A659FF]">SESH</span>" and is exchanged among friends after a great hangout. we are focused on bringing people together in real life, not just online.
             </p>
             <p className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-nunito text-center">
-              <span className="font-bold italic text-purple-400">SESH</span> was created by two people.
+              <span className="font-bold italic text-[#A659FF]">SESH</span> was created by two people.
             </p>
           </div>
         </div>
 
         {/* App Store Buttons */}
-        <div className="w-full mb-4 sm:mb-6">
+        <div className="w-full">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <img
               src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
@@ -9423,44 +9425,47 @@ const App = () => {
         {/* HOW TO SESH SECTION */}
         {activeSection === 'howToSesh' && (
           <>
-        <div className="w-full mb-6 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {/* SWIPE Card */}
-          <div className="flex flex-col items-center">
-            <h3 className="text-[#4A4A4A] text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center font-nunito"><em>SWIPE</em></h3>
-            <div style={{ backgroundColor: '#EFEFEF' }} className="rounded-xl p-10 sm:p-12 md:p-14 flex flex-col items-center justify-center min-h-[300px] sm:min-h-[350px] w-full">
-              <div className="flex gap-4 mb-6 sm:mb-8">
-                <img src="/Onboarding_Swipe_Left.svg" alt="Swipe Left" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
-                <img src="/Onboarding_Swipe_Right.svg" alt="Swipe Right" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
+        <h2 className="text-[#4A4A4A] text-2xl sm:text-3xl md:text-4xl font-bold mb-6 font-nunito text-center"><i>HOW TO SESH?</i></h2>
+        <div className="w-full mb-6 h-[400px] sm:h-[420px] md:h-[450px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 h-full">
+            {/* SWIPE Card */}
+            <div className="flex flex-col items-center h-full">
+              <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-2xl font-bold mb-2 text-center font-nunito"><em>SWIPE</em></h3>
+              <div className="bg-gray-100 rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center flex-1 w-full">
+                <div className="flex gap-3 mb-4 sm:mb-6">
+                  <img src="/Onboarding_Swipe_Left.svg" alt="Swipe Left" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />
+                  <img src="/Onboarding_Swipe_Right.svg" alt="Swipe Right" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />
+                </div>
+                <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-lg sm:text-xl md:text-2xl">SWIPE LEFT FOR NO AND RIGHT FOR YES</p>
               </div>
-              <p className="text-[#4A4A4A] text-center font-nunito font-bold italic" style={{ fontSize: '30px' }}>SWIPE LEFT FOR NO AND RIGHT FOR YES</p>
             </div>
-          </div>
 
-          {/* INVITE Card */}
-          <div className="flex flex-col items-center">
-            <h3 className="text-[#4A4A4A] text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center font-nunito"><em>INVITE</em></h3>
-            <div style={{ backgroundColor: '#EFEFEF' }} className="rounded-xl p-10 sm:p-12 md:p-14 flex flex-col items-center justify-center min-h-[300px] sm:min-h-[350px] w-full">
-              <div className="mb-6 sm:mb-8">
-                <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
+            {/* INVITE Card */}
+            <div className="flex flex-col items-center h-full">
+              <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-2xl font-bold mb-2 text-center font-nunito"><em>INVITE</em></h3>
+              <div className="bg-gray-100 rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center flex-1 w-full">
+                <div className="mb-4 sm:mb-6">
+                  <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />
+                </div>
+                <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-lg sm:text-xl md:text-2xl">INVITE YOUR MATCH TO A SESH</p>
               </div>
-              <p className="text-[#4A4A4A] text-center font-nunito font-bold italic" style={{ fontSize: '30px' }}>INVITE YOUR MATCH TO A SESH</p>
             </div>
-          </div>
 
-          {/* PLAN Card */}
-          <div className="flex flex-col items-center">
-            <h3 className="text-[#4A4A4A] text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center font-nunito"><em>PLAN</em></h3>
-            <div style={{ backgroundColor: '#EFEFEF' }} className="rounded-xl p-10 sm:p-12 md:p-14 flex flex-col items-center justify-center min-h-[300px] sm:min-h-[350px] max-h-[350px] sm:max-h-[350px] w-full">
-              <div className="mb-6 sm:mb-8">
-                <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
+            {/* PLAN Card */}
+            <div className="flex flex-col items-center h-full">
+              <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-2xl font-bold mb-2 text-center font-nunito"><em>PLAN</em></h3>
+              <div className="bg-gray-100 rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center flex-1 w-full">
+                <div className="mb-4 sm:mb-6">
+                  <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />
+                </div>
+                <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-lg sm:text-xl md:text-xl">PLAN THROUGH A CHAT AND<br />HAVE YOUR SESH</p>
               </div>
-              <p className="text-[#4A4A4A] text-center font-nunito font-bold italic" style={{ fontSize: '26px' }}>PLAN THROUGH A CHAT AND<br />HAVE YOUR SESH</p>
             </div>
           </div>
         </div>
 
         {/* App Store Buttons */}
-        <div className="w-full mb-4 sm:mb-6">
+        <div className="w-full">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <img
               src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
@@ -9487,14 +9492,14 @@ const App = () => {
         {activeSection === 'contact' && (
           <>
         <h2 className="text-[#4A4A4A] text-2xl sm:text-3xl md:text-4xl font-bold mb-6 font-nunito text-center"><i>CONTACT US</i></h2>
-        <div className="w-full mb-6">
-          <div style={{ backgroundColor: '#EFEFEF' }} className="rounded-xl p-8 sm:p-10 md:p-12">
+        <div className="w-full mb-6 h-[400px] sm:h-[420px] md:h-[450px] overflow-y-auto">
+          <div className="bg-gray-100 rounded-xl p-8 sm:p-10 md:p-12 h-full">
             <ContactForm />
           </div>
         </div>
 
         {/* App Store Buttons */}
-        <div className="w-full mb-4 sm:mb-6">
+        <div className="w-full">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <img
               src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
