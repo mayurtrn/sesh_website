@@ -8305,10 +8305,25 @@ const FlipCard = ({ digit, isAnimating, isShuffling }) => {
   const displayDigit = isShuffling ? shuffleDigit : (isAnimating ? nextDigit : currentDigit);
 
   return (
-    <div className="relative flex-1 h-16 sm:h-20 md:h-24 lg:h-28 rounded-md flex items-center justify-center" style={{ backgroundColor: '#A659FF' }}>
-      <span className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-nunito z-50 relative">
-        {displayDigit}
-      </span>
+    <div className="relative flex-1 h-16 sm:h-20 md:h-24 lg:h-28 rounded-md overflow-hidden flex items-center justify-center" style={{ backgroundColor: '#A659FF' }}>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-nunito transition-all duration-100 leading-none">
+          {displayDigit}
+        </span>
+      </div>
+      <div className={`absolute inset-0 ${isAnimating ? 'animate-flip' : ''}`}>
+        <div className="absolute top-0 left-0 right-0 h-1/2 flex items-end justify-center overflow-hidden" style={{ backgroundColor: '#A659FF' }}>
+          <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-nunito transform translate-y-1/2 leading-none">
+            {displayDigit}
+          </span>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-1/2 flex items-start justify-center overflow-hidden" style={{ backgroundColor: '#A659FF' }}>
+          <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-nunito transform -translate-y-1/2 leading-none">
+            {displayDigit}
+          </span>
+        </div>
+      </div>
+      <div className="absolute top-1/2 left-0 right-0 h-px transform -translate-y-1/2 z-10" style={{ backgroundColor: '#8B4CD9' }}></div>
     </div>
   );
 };
@@ -8679,7 +8694,7 @@ const ContactForm = () => {
                 onChange={handleInputChange}
                 placeholder="EMAIL ADDRESS"
                 className="w-full px-4 py-3 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito placeholder-black placeholder:font-bold"
-                style={{ backgroundColor: '#F9F9F9' }}
+                style={{ backgroundColor: 'white' }}
                 required
               />
             </div>
@@ -8692,7 +8707,7 @@ const ContactForm = () => {
                 onChange={handleInputChange}
                 placeholder="PHONE NUMBER"
                 className="w-full px-4 py-3 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito placeholder-black placeholder:font-bold"
-                style={{ backgroundColor: '#F9F9F9' }}
+                style={{ backgroundColor: 'white' }}
               />
             </div>
             <div>
@@ -8701,11 +8716,11 @@ const ContactForm = () => {
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito font-bold"
-                style={{ backgroundColor: '#F9F9F9' }}
+                className="w-full px-4 py-3 rounded-lg focus:outline-none font-nunito font-bold"
+                style={{ backgroundColor: 'white', color: formData.category ? '#4A4A4A' : '#000000' }}
                 required
               >
-                <option value="">INQUIRY TYPE</option>
+                <option value="" style={{ color: '#000000' }}>INQUIRY TYPE</option>
                 {categories.map(category => (
                   <option key={category.id} value={category.name}>
                     {category.name}
@@ -8723,7 +8738,7 @@ const ContactForm = () => {
               rows="5"
               placeholder="ENTER ANY MORE DETAILS ABOUT YOUR REQUEST"
               className="w-full px-4 py-3 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito placeholder-black placeholder:font-bold"
-              style={{ backgroundColor: '#F9F9F9' }}
+              style={{ backgroundColor: 'white' }}
               required
             />
           </div>
@@ -9261,91 +9276,92 @@ const App = () => {
 
 
       {/* Logo and Tagline Section - Below Nav Bar */}
-      <div className="w-full bg-white py-6 relative z-10">
-        <div className="w-full flex items-center justify-start gap-4 px-12 sm:px-24 md:px-32 lg:px-48 xl:px-64">
-          <h1 className="text-purple-500 text-3xl sm:text-4xl md:text-5xl lg:text-9xl font-bold font-nunito">
+      <div className="w-full bg-white py-6 relative z-10" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+        <div className="w-full flex items-center" style={{ gap: '12px' }}>
+          <h1 className="text-purple-500 font-bold font-nunito whitespace-nowrap" style={{ fontSize: 'clamp(3rem, 9vw, 11rem)', letterSpacing: '0.05em' }}>
             <i>SESH</i>
           </h1>
           <img
             src="SESH_Isotype 1.svg"
             alt="SESH Icon"
-            className="h-16 sm:h-20 md:h-24 lg:h-32"
+            className="h-20 sm:h-28 md:h-36 lg:h-48"
           />
-          <p className="text-gray-600 text-base sm:text-lg md:text-xl lg:text-6xl italic font-nunito uppercase">
-            the world is your oyster, go find your pearls
+          <p className="text-gray-600 italic font-nunito uppercase" style={{ fontSize: 'clamp(1.25rem, 4vw, 7rem)', letterSpacing: '0.08em', lineHeight: '1.2' }}>
+            the world is your oyster,<br />go find your pearls
           </p>
         </div>
       </div>
 
-      <div className="py-3 sm:py-4 relative z-10 w-full" style={{ paddingLeft: '10px', paddingRight: '10px' }}>
+      <div className="py-3 sm:py-4 relative z-10 w-full" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
 
 
         {/* HOME SECTION */}
         {activeSection === 'home' && (
           <>
-        <h2 className="text-[#4A4A4A] text-2xl sm:text-3xl md:text-4xl font-bold mb-6 font-nunito text-center"><i>JOIN THE RACE TO 1 MILLION</i></h2>
-
         {/* Text and Counter Row */}
-        <div className="w-full mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="w-full mb-4 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Text Container */}
           <div className="bg-gray-100 rounded-xl p-6 sm:p-8 flex items-center justify-center">
-            <p className="text-[#4A4A4A] text-base sm:text-lg md:text-xl font-nunito">
-              We are going to launch the next phase of the app once we hit <span className="font-bold">1 million users</span>. help us get there by inviting your friends, family, and neighbors to download the app!
+            <p className="text-[#4A4A4A] text-lg sm:text-xl md:text-2xl lg:text-3xl font-nunito">
+              We are going to launch the next phase of the app once we hit <span className="font-bold">1 million users</span>. Help us get there by inviting your friends, family, and neighbors to download the app!
             </p>
           </div>
 
           {/* Counter Container */}
-          <div className="bg-gray-100 rounded-xl flex justify-center items-center" style={{ padding: '10px' }}>
+          <div className="bg-gray-100 rounded-xl flex flex-col items-end" style={{ padding: '10px' }}>
             <div className="flex justify-center items-center space-x-2 sm:space-x-3 w-full">
               {renderFlipCounter()}
+            </div>
+            <div className="mt-1 mr-2">
+              <span className="text-[#4A4A4A] text-sm sm:text-base font-nunito font-bold">USERS</span>
             </div>
           </div>
         </div>
 
         {/* How to Sesh Cards, Banners and Form Layout */}
         <div className="w-full mb-2">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ minHeight: '500px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Left Column: Cards and Banners */}
-            <div className="flex flex-col gap-4 h-full">
+            <div className="flex flex-col gap-4">
               {/* How to Sesh Cards */}
-              <div className="grid grid-cols-3 gap-4 flex-1">
+              <div className="grid grid-cols-3 gap-4">
                 {/* SWIPE Card */}
-                <div className="flex flex-col items-center h-full">
-                  <h3 className="text-[#4A4A4A] text-xl sm:text-2xl font-bold mb-3 text-center font-nunito"><em>SWIPE</em></h3>
-                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center w-full flex-1">
+                <div className="flex flex-col items-center">
+                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full">
+                    <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>SWIPE</em></h3>
                     <div className="flex gap-3 mb-4">
-                      <img src="/Onboarding_Swipe_Left.svg" alt="Swipe Left" className="w-16 h-16 sm:w-20 sm:h-20" />
-                      <img src="/Onboarding_Swipe_Right.svg" alt="Swipe Right" className="w-16 h-16 sm:w-20 sm:h-20" />
+                      <img src="/Onboarding_Swipe_Left.svg" alt="Swipe Left" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
+                      <img src="/Onboarding_Swipe_Right.svg" alt="Swipe Right" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
                     </div>
-                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-sm sm:text-base">swipe left for no and right for yes</p>
+                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-base sm:text-lg md:text-xl uppercase">SWIPE LEFT FOR NO AND RIGHT FOR YES</p>
                   </div>
                 </div>
 
                 {/* INVITE Card */}
-                <div className="flex flex-col items-center h-full">
-                  <h3 className="text-[#4A4A4A] text-xl sm:text-2xl font-bold mb-3 text-center font-nunito"><em>INVITE</em></h3>
-                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center w-full flex-1">
+                <div className="flex flex-col items-center">
+                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full">
+                    <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>INVITE</em></h3>
                     <div className="mb-4">
-                      <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-16 h-16 sm:w-20 sm:h-20" />
+                      <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
                     </div>
-                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-sm sm:text-base">swipe left for no and right for yes</p>
+                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-base sm:text-lg md:text-xl uppercase">INVITE YOUR MATCH TO A SESH</p>
                   </div>
                 </div>
 
                 {/* PLAN Card */}
-                <div className="flex flex-col items-center h-full">
-                  <h3 className="text-[#4A4A4A] text-xl sm:text-2xl font-bold mb-3 text-center font-nunito"><em>PLAN</em></h3>
-                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center w-full flex-1">
+                <div className="flex flex-col items-center">
+                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full">
+                    <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>PLAN</em></h3>
                     <div className="mb-4">
-                      <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-16 h-16 sm:w-20 sm:h-20" />
+                      <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
                     </div>
-                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-sm sm:text-base">swipe left for no and right for yes</p>
+                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-base sm:text-lg md:text-xl uppercase whitespace-nowrap">PLAN THROUGH A CHAT<br />AND HAVE YOUR SESH</p>
                   </div>
                 </div>
               </div>
 
               {/* App Store Banners */}
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pb-4">
+              <div className="flex flex-col sm:flex-row justify-start items-start gap-4 pb-4">
                 <a
                   href="https://apps.apple.com/us/app/the-sesh-app/id1671947382"
                   target="_blank"
@@ -9372,9 +9388,8 @@ const App = () => {
             </div>
 
             {/* Right Column: Contact Form */}
-            <div className="flex flex-col items-center h-full">
-              <h3 className="text-[#4A4A4A] text-lg font-bold mb-2 text-center font-nunito"><em>CONTACT</em></h3>
-              <div className="bg-gray-100 rounded-xl p-4 w-full flex-1">
+            <div className="flex flex-col items-center">
+              <div className="bg-gray-100 rounded-xl p-2 sm:p-3 w-full">
                 <ContactForm />
               </div>
             </div>
