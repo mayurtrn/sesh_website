@@ -9277,7 +9277,7 @@ const App = () => {
 
 
       {/* Logo and Tagline Section - Below Nav Bar */}
-      <div className="w-full pb-6 relative z-10" style={{ paddingLeft: '30px', paddingRight: '30px', backgroundColor: '#F9F9F9' }}>
+      <div className="w-full relative z-10" style={{ paddingLeft: '30px', paddingRight: '30px', backgroundColor: '#F9F9F9' }}>
         <div className="w-full flex items-center" style={{ gap: '12px' }}>
           <h1 className="text-purple-500 font-bold font-nunito whitespace-nowrap" style={{ fontSize: 'clamp(3rem, 9vw, 11rem)', letterSpacing: '0.05em' }}>
             <i>SESH</i>
@@ -9300,7 +9300,7 @@ const App = () => {
         {activeSection === 'home' && (
           <>
         {/* Text and Counter Row */}
-        <div className="w-full mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="w-full mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Text Container */}
           <div className="rounded-xl p-6 sm:p-8 flex items-center justify-center" style={{ backgroundColor: '#EFEFEF' }}>
             <p className="text-[#4A4A4A] text-lg sm:text-xl md:text-2xl lg:text-3xl font-nunito">
@@ -9320,15 +9320,15 @@ const App = () => {
         </div>
 
         {/* How to Sesh Cards and Form Layout */}
-        <div className="w-full mb-6">
+        <div className="w-full">
           {/* Cards and Form Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 items-stretch">
             {/* How to Sesh Cards */}
-            <div className="md:col-span-1">
-              <div className="grid grid-cols-3 gap-4">
+            <div className="md:col-span-1 h-full">
+              <div className="grid grid-cols-3 gap-6 h-full">
                 {/* SWIPE Card */}
-                <div className="flex flex-col items-center">
-                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full" style={{ backgroundColor: '#EFEFEF' }}>
+                <div className="flex flex-col items-center h-full">
+                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
                     <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>SWIPE</em></h3>
                     <div className="flex mb-4 justify-center">
                       <img src="/Onboarding_Swipe_Left.svg" alt="Swipe Left" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
@@ -9339,8 +9339,8 @@ const App = () => {
                 </div>
 
                 {/* INVITE Card */}
-                <div className="flex flex-col items-center">
-                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full" style={{ backgroundColor: '#EFEFEF' }}>
+                <div className="flex flex-col items-center h-full">
+                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
                     <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>INVITE</em></h3>
                     <div className="mb-4">
                       <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
@@ -9350,8 +9350,8 @@ const App = () => {
                 </div>
 
                 {/* PLAN Card */}
-                <div className="flex flex-col items-center">
-                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full" style={{ backgroundColor: '#EFEFEF' }}>
+                <div className="flex flex-col items-center h-full">
+                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
                     <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>PLAN</em></h3>
                     <div className="mb-4">
                       <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
@@ -9363,15 +9363,15 @@ const App = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="md:col-span-1 flex flex-col items-center">
-              <div className="rounded-xl p-2 sm:p-3 w-full" style={{ backgroundColor: '#EFEFEF' }}>
+            <div className="md:col-span-1 flex flex-col h-full">
+              <div className="rounded-xl p-2 sm:p-2 md:p-3 w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
                 <ContactForm />
               </div>
             </div>
           </div>
 
           {/* App Store Banners Row */}
-          <div className="flex flex-col sm:flex-row justify-start items-start gap-4 pb-4">
+          <div className="flex flex-col sm:flex-row justify-start items-start gap-6 mb-8">
                 <a
                   href="https://apps.apple.com/us/app/the-sesh-app/id1671947382"
                   target="_blank"
