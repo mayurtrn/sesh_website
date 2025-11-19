@@ -9206,6 +9206,33 @@ const App = () => {
         .font-nunito {
           font-family: 'Nunito', sans-serif !important;
         }
+
+        /* Mobile-only styles */
+        @media (max-width: 767px) {
+          .mobile-text-container {
+            padding: 12px 16px !important;
+          }
+          .mobile-text-size {
+            font-size: 1rem !important;
+          }
+          .mobile-counter-container {
+            padding: 8px !important;
+            padding-bottom: 24px !important;
+          }
+          .mobile-counter-spacing {
+            gap: 4px !important;
+          }
+          .mobile-users-text {
+            font-size: 0.75rem !important;
+            bottom: 4px !important;
+            right: 8px !important;
+          }
+          .mobile-tagline {
+            font-size: 0.6rem !important;
+            letter-spacing: 0.03em !important;
+            line-height: 1.5 !important;
+          }
+        }
         .react-international-phone-country-selector-dropdown {
           z-index: 60;
         }
@@ -9276,44 +9303,45 @@ const App = () => {
       )}
 
 
-      {/* Logo and Tagline Section - Below Nav Bar */}
-      <div className="w-full relative z-10" style={{ paddingLeft: '30px', paddingRight: '30px', backgroundColor: '#F9F9F9' }}>
-        <div className="w-full flex items-center" style={{ gap: '12px' }}>
-          <h1 className="text-purple-500 font-bold font-nunito whitespace-nowrap" style={{ fontSize: 'clamp(3rem, 9vw, 11rem)', letterSpacing: '0.05em' }}>
-            <i>SESH</i>
-          </h1>
-          <img
-            src="SESH_Isotype 1.svg"
-            alt="SESH Icon"
-            className="h-20 sm:h-28 md:h-36 lg:h-48"
-          />
-          <p className="text-gray-600 italic font-nunito uppercase" style={{ fontSize: 'clamp(1.25rem, 4vw, 7rem)', letterSpacing: '0.08em', lineHeight: '1.2' }}>
-            the world is your oyster,<br />go find your pearls
-          </p>
+      <div className="relative z-10 w-full overflow-y-auto md:overflow-y-visible h-screen md:h-auto" style={{ backgroundColor: '#F9F9F9' }}>
+        {/* Logo and Tagline Section - Below Nav Bar */}
+        <div className="w-full relative z-10" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+          <div className="w-full flex items-center" style={{ gap: '12px' }}>
+            <h1 className="text-purple-500 font-bold font-nunito whitespace-nowrap" style={{ fontSize: 'clamp(3rem, 9vw, 11rem)', letterSpacing: '0.05em' }}>
+              <i>SESH</i>
+            </h1>
+            <img
+              src="SESH_Isotype 1.svg"
+              alt="SESH Icon"
+              className="h-20 sm:h-28 md:h-36 lg:h-48"
+            />
+            <p className="text-gray-600 italic font-nunito uppercase whitespace-normal mobile-tagline" style={{ fontSize: 'clamp(0.65rem, 4vw, 7rem)', letterSpacing: '0.08em', lineHeight: '1.2' }}>
+              the world is your oyster,<br />go find your pearls
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="relative z-10 w-full" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+        <div className="relative z-10 w-full" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
 
 
         {/* HOME SECTION */}
         {activeSection === 'home' && (
           <>
         {/* Text and Counter Row */}
-        <div className="w-full mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="w-full mb-4 sm:mb-6 md:mb-8 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
           {/* Text Container */}
-          <div className="rounded-xl p-6 sm:p-8 flex items-center justify-center" style={{ backgroundColor: '#EFEFEF' }}>
-            <p className="text-[#4A4A4A] text-lg sm:text-xl md:text-2xl lg:text-3xl font-nunito">
+          <div className="rounded-xl p-6 sm:p-8 flex items-center justify-center mobile-text-container" style={{ backgroundColor: '#EFEFEF' }}>
+            <p className="text-[#4A4A4A] text-lg sm:text-xl md:text-2xl lg:text-3xl font-nunito mobile-text-size">
               We are going to launch the next phase of the app once we hit <span className="font-bold">1 million users</span>. Help us get there by inviting your friends, family, and neighbors to download the app!
             </p>
           </div>
 
           {/* Counter Container */}
-          <div className="rounded-xl flex flex-col justify-center relative" style={{ padding: '10px', backgroundColor: '#EFEFEF' }}>
-            <div className="flex justify-center items-center space-x-2 sm:space-x-3 w-full">
+          <div className="rounded-xl flex flex-col justify-center relative mobile-counter-container" style={{ padding: '10px', backgroundColor: '#EFEFEF' }}>
+            <div className="flex justify-center items-center space-x-2 sm:space-x-3 w-full mobile-counter-spacing">
               {renderFlipCounter()}
             </div>
-            <div className="absolute bottom-2 right-4">
+            <div className="absolute bottom-2 right-4 mobile-users-text">
               <span className="text-[#4A4A4A] text-sm sm:text-base font-nunito font-bold">USERS</span>
             </div>
           </div>
@@ -9322,41 +9350,40 @@ const App = () => {
         {/* How to Sesh Cards and Form Layout */}
         <div className="w-full">
           {/* Cards and Form Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8 items-stretch">
             {/* How to Sesh Cards */}
             <div className="md:col-span-1 h-full">
-              <div className="grid grid-cols-3 gap-6 h-full">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 h-full">
                 {/* SWIPE Card */}
                 <div className="flex flex-col items-center h-full">
-                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
-                    <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>SWIPE</em></h3>
-                    <div className="flex mb-4 justify-center">
-                      <img src="/Onboarding_Swipe_Left.svg" alt="Swipe Left" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
-                      <img src="/Onboarding_Swipe_Right.svg" alt="Swipe Right" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
+                  <div className="rounded-xl p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
+                    <h3 className="text-[#4A4A4A] text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4 text-center font-nunito"><em>SWIPE</em></h3>
+                    <div className="mb-2 sm:mb-4 flex justify-center">
+                      <img src="/left and right swipe.svg" alt="Swipe Left and Right" className="h-10 sm:h-20 md:h-24 lg:h-28" style={{ width: 'auto' }} />
                     </div>
-                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-base sm:text-lg md:text-xl uppercase">SWIPE LEFT FOR NO AND RIGHT FOR YES</p>
+                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-[0.5rem] sm:text-base md:text-lg lg:text-xl uppercase">SWIPE LEFT FOR NO AND RIGHT FOR YES</p>
                   </div>
                 </div>
 
                 {/* INVITE Card */}
                 <div className="flex flex-col items-center h-full">
-                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
-                    <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>INVITE</em></h3>
-                    <div className="mb-4">
-                      <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
+                  <div className="rounded-xl p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
+                    <h3 className="text-[#4A4A4A] text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4 text-center font-nunito"><em>INVITE</em></h3>
+                    <div className="mb-2 sm:mb-4">
+                      <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-10 h-10 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28" />
                     </div>
-                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-base sm:text-lg md:text-xl uppercase">INVITE YOUR MATCH TO A SESH</p>
+                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-[0.5rem] sm:text-base md:text-lg lg:text-xl uppercase">INVITE YOUR MATCH TO A SESH</p>
                   </div>
                 </div>
 
                 {/* PLAN Card */}
                 <div className="flex flex-col items-center h-full">
-                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
-                    <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>PLAN</em></h3>
-                    <div className="mb-4">
-                      <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
+                  <div className="rounded-xl p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
+                    <h3 className="text-[#4A4A4A] text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4 text-center font-nunito"><em>PLAN</em></h3>
+                    <div className="mb-2 sm:mb-4">
+                      <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-10 h-10 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28" />
                     </div>
-                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-base sm:text-lg md:text-xl uppercase whitespace-nowrap">PLAN THROUGH A CHAT<br />AND HAVE YOUR SESH</p>
+                    <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-[0.5rem] sm:text-base md:text-lg lg:text-xl uppercase whitespace-nowrap">PLAN THROUGH A CHAT<br />AND HAVE YOUR SESH</p>
                   </div>
                 </div>
               </div>
@@ -9371,7 +9398,7 @@ const App = () => {
           </div>
 
           {/* App Store Banners Row */}
-          <div className="flex flex-col sm:flex-row justify-start items-start gap-6 mb-8">
+          <div className="flex flex-col sm:flex-row justify-start items-start gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
                 <a
                   href="https://apps.apple.com/us/app/the-sesh-app/id1671947382"
                   target="_blank"
@@ -9538,6 +9565,7 @@ const App = () => {
           </>
         )}
 
+        </div>
       </div>
     </div>
   );
