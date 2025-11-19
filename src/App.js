@@ -8693,8 +8693,8 @@ const ContactForm = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="EMAIL ADDRESS"
-                className="w-full px-4 py-3 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito placeholder-black placeholder:font-bold"
-                style={{ backgroundColor: 'white' }}
+                className="w-full px-4 py-3 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito placeholder-black placeholder:font-bold border-none"
+                style={{ backgroundColor: '#F9F9F9', border: 'none' }}
                 required
               />
             </div>
@@ -8706,8 +8706,8 @@ const ContactForm = () => {
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
                 placeholder="PHONE NUMBER"
-                className="w-full px-4 py-3 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito placeholder-black placeholder:font-bold"
-                style={{ backgroundColor: 'white' }}
+                className="w-full px-4 py-3 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito placeholder-black placeholder:font-bold border-none"
+                style={{ backgroundColor: '#F9F9F9', border: 'none' }}
               />
             </div>
             <div>
@@ -8716,8 +8716,8 @@ const ContactForm = () => {
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 rounded-lg focus:outline-none font-nunito font-bold"
-                style={{ backgroundColor: 'white', color: formData.category ? '#4A4A4A' : '#000000' }}
+                className="w-full px-4 py-3 rounded-lg focus:outline-none font-nunito font-bold border-none"
+                style={{ backgroundColor: '#F9F9F9', color: formData.category ? '#4A4A4A' : '#000000', border: 'none' }}
                 required
               >
                 <option value="" style={{ color: '#000000' }}>INQUIRY TYPE</option>
@@ -8737,8 +8737,8 @@ const ContactForm = () => {
               onChange={handleInputChange}
               rows="5"
               placeholder="ENTER ANY MORE DETAILS ABOUT YOUR REQUEST"
-              className="w-full px-4 py-3 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito placeholder-black placeholder:font-bold"
-              style={{ backgroundColor: 'white' }}
+              className="w-full px-4 py-3 rounded-lg text-[#4A4A4A] focus:outline-none font-nunito placeholder-black placeholder:font-bold border-none"
+              style={{ backgroundColor: '#F9F9F9', border: 'none' }}
               required
             />
           </div>
@@ -9175,7 +9175,8 @@ const App = () => {
   };
 
   return (
-    <div className="h-screen bg-white relative overflow-hidden font-nunito">
+    // <div className="h-screen bg-white relative overflow-hidden font-nunito">
+     <div className="h-screen relative overflow-hidden font-nunito" style={{ backgroundColor: '#F9F9F9' }}>
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
 
@@ -9276,7 +9277,7 @@ const App = () => {
 
 
       {/* Logo and Tagline Section - Below Nav Bar */}
-      <div className="w-full bg-white py-6 relative z-10" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+      <div className="w-full pb-6 relative z-10" style={{ paddingLeft: '30px', paddingRight: '30px', backgroundColor: '#F9F9F9' }}>
         <div className="w-full flex items-center" style={{ gap: '12px' }}>
           <h1 className="text-purple-500 font-bold font-nunito whitespace-nowrap" style={{ fontSize: 'clamp(3rem, 9vw, 11rem)', letterSpacing: '0.05em' }}>
             <i>SESH</i>
@@ -9292,44 +9293,44 @@ const App = () => {
         </div>
       </div>
 
-      <div className="py-3 sm:py-4 relative z-10 w-full" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+      <div className="relative z-10 w-full" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
 
 
         {/* HOME SECTION */}
         {activeSection === 'home' && (
           <>
         {/* Text and Counter Row */}
-        <div className="w-full mb-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="w-full mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Text Container */}
-          <div className="bg-gray-100 rounded-xl p-6 sm:p-8 flex items-center justify-center">
+          <div className="rounded-xl p-6 sm:p-8 flex items-center justify-center" style={{ backgroundColor: '#EFEFEF' }}>
             <p className="text-[#4A4A4A] text-lg sm:text-xl md:text-2xl lg:text-3xl font-nunito">
               We are going to launch the next phase of the app once we hit <span className="font-bold">1 million users</span>. Help us get there by inviting your friends, family, and neighbors to download the app!
             </p>
           </div>
 
           {/* Counter Container */}
-          <div className="bg-gray-100 rounded-xl flex flex-col items-end" style={{ padding: '10px' }}>
+          <div className="rounded-xl flex flex-col justify-center relative" style={{ padding: '10px', backgroundColor: '#EFEFEF' }}>
             <div className="flex justify-center items-center space-x-2 sm:space-x-3 w-full">
               {renderFlipCounter()}
             </div>
-            <div className="mt-1 mr-2">
+            <div className="absolute bottom-2 right-4">
               <span className="text-[#4A4A4A] text-sm sm:text-base font-nunito font-bold">USERS</span>
             </div>
           </div>
         </div>
 
-        {/* How to Sesh Cards, Banners and Form Layout */}
-        <div className="w-full mb-2">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Left Column: Cards and Banners */}
-            <div className="flex flex-col gap-4">
-              {/* How to Sesh Cards */}
+        {/* How to Sesh Cards and Form Layout */}
+        <div className="w-full mb-6">
+          {/* Cards and Form Row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            {/* How to Sesh Cards */}
+            <div className="md:col-span-1">
               <div className="grid grid-cols-3 gap-4">
                 {/* SWIPE Card */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full">
+                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full" style={{ backgroundColor: '#EFEFEF' }}>
                     <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>SWIPE</em></h3>
-                    <div className="flex gap-3 mb-4">
+                    <div className="flex mb-4 justify-center">
                       <img src="/Onboarding_Swipe_Left.svg" alt="Swipe Left" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
                       <img src="/Onboarding_Swipe_Right.svg" alt="Swipe Right" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
                     </div>
@@ -9339,7 +9340,7 @@ const App = () => {
 
                 {/* INVITE Card */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full">
+                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full" style={{ backgroundColor: '#EFEFEF' }}>
                     <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>INVITE</em></h3>
                     <div className="mb-4">
                       <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
@@ -9350,7 +9351,7 @@ const App = () => {
 
                 {/* PLAN Card */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gray-100 rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full">
+                  <div className="rounded-xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center w-full" style={{ backgroundColor: '#EFEFEF' }}>
                     <h3 className="text-[#4A4A4A] text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center font-nunito"><em>PLAN</em></h3>
                     <div className="mb-4">
                       <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" />
@@ -9359,9 +9360,18 @@ const App = () => {
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* App Store Banners */}
-              <div className="flex flex-col sm:flex-row justify-start items-start gap-4 pb-4">
+            {/* Contact Form */}
+            <div className="md:col-span-1 flex flex-col items-center">
+              <div className="rounded-xl p-2 sm:p-3 w-full" style={{ backgroundColor: '#EFEFEF' }}>
+                <ContactForm />
+              </div>
+            </div>
+          </div>
+
+          {/* App Store Banners Row */}
+          <div className="flex flex-col sm:flex-row justify-start items-start gap-4 pb-4">
                 <a
                   href="https://apps.apple.com/us/app/the-sesh-app/id1671947382"
                   target="_blank"
@@ -9384,15 +9394,6 @@ const App = () => {
                     className="h-16 sm:h-20 md:h-24 cursor-pointer hover:opacity-80 transition-opacity"
                   />
                 </a>
-              </div>
-            </div>
-
-            {/* Right Column: Contact Form */}
-            <div className="flex flex-col items-center">
-              <div className="bg-gray-100 rounded-xl p-2 sm:p-3 w-full">
-                <ContactForm />
-              </div>
-            </div>
           </div>
         </div>
           </>
