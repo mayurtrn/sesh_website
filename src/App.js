@@ -8742,7 +8742,7 @@ const ContactForm = () => {
               required
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center" style={{ marginTop: '14px' }}>
             <button
               type="submit"
               className="bg-purple-500 text-white px-32 py-3 rounded-lg hover:bg-purple-600 transition-colors font-nunito font-bold italic"
