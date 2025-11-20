@@ -9305,7 +9305,7 @@ const App = () => {
 
       <div className="relative z-10 w-full overflow-y-auto md:overflow-y-visible h-screen md:h-auto" style={{ backgroundColor: '#F9F9F9' }}>
         {/* Logo and Tagline Section - Below Nav Bar */}
-        <div className="w-full relative z-10" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+        <div className="w-full relative z-10 py-4 md:py-0" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
           <div className="w-full flex items-center" style={{ gap: '12px' }}>
             <h1 className="text-purple-500 font-bold font-nunito whitespace-nowrap" style={{ fontSize: 'clamp(3rem, 9vw, 11rem)', letterSpacing: '0.05em' }}>
               <i>SESH</i>
@@ -9349,17 +9349,17 @@ const App = () => {
 
         {/* How to Sesh Cards and Form Layout */}
         <div className="w-full">
-          {/* Cards and Form Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8 items-stretch">
+          {/* Flex container for mobile reordering */}
+          <div className="flex flex-col md:grid md:grid-cols-2 md:gap-3 md:gap-4 lg:gap-6">
             {/* How to Sesh Cards */}
-            <div className="md:col-span-1 h-full">
+            <div className="md:col-span-1 h-full order-1 mb-4 sm:mb-6 md:mb-8">
               <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 h-full">
                 {/* SWIPE Card */}
                 <div className="flex flex-col items-center h-full">
                   <div className="rounded-xl p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
                     <h3 className="text-[#4A4A4A] text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4 text-center font-nunito"><em>SWIPE</em></h3>
                     <div className="mb-2 sm:mb-4 flex justify-center">
-                      <img src="/left and right swipe.svg" alt="Swipe Left and Right" className="h-10 sm:h-20 md:h-24 lg:h-28" style={{ width: 'auto' }} />
+                      <img src="/left and right swipe.svg" alt="Swipe Left and Right" className="w-20 h-10 sm:w-40 sm:h-20 md:w-48 md:h-24 lg:w-56 lg:h-28 object-contain" />
                     </div>
                     <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-[0.5rem] sm:text-base md:text-lg lg:text-xl uppercase">SWIPE LEFT FOR NO AND RIGHT FOR YES</p>
                   </div>
@@ -9389,38 +9389,38 @@ const App = () => {
               </div>
             </div>
 
+            {/* App Store Banners Row */}
+            <div className="flex flex-row justify-start items-center gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8 order-2 md:order-3 md:col-span-2">
+                  <a
+                    href="https://apps.apple.com/us/app/the-sesh-app/id1671947382"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                      alt="Download on the App Store"
+                      className="h-16 sm:h-20 md:h-24 cursor-pointer hover:opacity-80 transition-opacity object-contain"
+                    />
+                  </a>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.therealnetworkssss.sesh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="/google-play-badge.png"
+                      alt="Get it on Google Play"
+                      className="h-16 sm:h-20 md:h-24 cursor-pointer hover:opacity-80 transition-opacity object-contain"
+                    />
+                  </a>
+            </div>
+
             {/* Contact Form */}
-            <div className="md:col-span-1 flex flex-col h-full">
+            <div className="md:col-span-1 flex flex-col h-full order-3 md:order-2 mb-4 sm:mb-6 md:mb-8">
               <div className="rounded-xl p-2 sm:p-2 md:p-3 w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
                 <ContactForm />
               </div>
             </div>
-          </div>
-
-          {/* App Store Banners Row */}
-          <div className="flex flex-col sm:flex-row justify-start items-start gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
-                <a
-                  href="https://apps.apple.com/us/app/the-sesh-app/id1671947382"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-                    alt="Download on the App Store"
-                    className="h-16 sm:h-20 md:h-24 cursor-pointer hover:opacity-80 transition-opacity"
-                  />
-                </a>
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.therealnetworkssss.sesh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="/google-play-badge.png"
-                    alt="Get it on Google Play"
-                    className="h-16 sm:h-20 md:h-24 cursor-pointer hover:opacity-80 transition-opacity"
-                  />
-                </a>
           </div>
         </div>
           </>
