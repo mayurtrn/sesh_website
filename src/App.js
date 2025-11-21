@@ -8305,7 +8305,7 @@ const FlipCard = ({ digit, isAnimating, isShuffling }) => {
   const displayDigit = isShuffling ? shuffleDigit : (isAnimating ? nextDigit : currentDigit);
 
   return (
-    <div className="relative flex-1 h-16 sm:h-20 md:h-24 lg:h-28 rounded-md overflow-hidden flex items-center justify-center" style={{ backgroundColor: '#A659FF' }}>
+    <div className="relative flex-1 h-16 sm:h-20 md:h-24 lg:h-28 rounded-md overflow-hidden flex items-center justify-center mobile-flip-card" style={{ backgroundColor: '#A659FF' }}>
       <div className="absolute inset-0 flex items-center justify-center">
         <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-nunito transition-all duration-100 leading-none">
           {displayDigit}
@@ -8684,7 +8684,7 @@ const ContactForm = () => {
         </div>
       )}
       <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-2 md:gap-6">
             <div>
               <input
                 type="email"
@@ -9151,7 +9151,7 @@ const App = () => {
       const char = countStr[i];
       if (char === ',') {
         elements.push(
-          <span key={`comma-${i}`} className="text-purple-500 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-nunito leading-none flex items-center h-16 sm:h-20 md:h-24 lg:h-28">,</span>
+          <span key={`comma-${i}`} className="text-purple-500 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-nunito leading-none flex items-center h-16 sm:h-20 md:h-24 lg:h-28 mobile-comma">,</span>
         );
       } else {
         const isAnimating = animatingIndices.has(digitIndex);
@@ -9176,12 +9176,14 @@ const App = () => {
 
   return (
     // <div className="h-screen bg-white relative overflow-hidden font-nunito">
-     <div className="h-screen relative overflow-hidden font-nunito" style={{ backgroundColor: '#F9F9F9' }}>
+     <div className="h-screen relative overflow-y-auto md:overflow-hidden font-nunito" style={{ backgroundColor: '#F9F9F9' }}>
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
 
-        body {
-          overflow: hidden;
+        @media (min-width: 768px) {
+          body {
+            overflow: hidden;
+          }
         }
 
         @keyframes flip {
@@ -9213,14 +9215,14 @@ const App = () => {
             padding: 12px 16px !important;
           }
           .mobile-text-size {
-            font-size: 1rem !important;
+            font-size: 1.25rem !important;
           }
           .mobile-counter-container {
             padding: 8px !important;
             padding-bottom: 24px !important;
           }
           .mobile-counter-spacing {
-            gap: 4px !important;
+            gap: 2px !important;
           }
           .mobile-users-text {
             font-size: 0.75rem !important;
@@ -9231,6 +9233,26 @@ const App = () => {
             font-size: 0.6rem !important;
             letter-spacing: 0.03em !important;
             line-height: 1.5 !important;
+          }
+          .mobile-flip-card {
+            height: 72px !important;
+          }
+          .mobile-flip-card span {
+            font-size: 3rem !important;
+          }
+          .mobile-comma {
+            font-size: 3rem !important;
+            height: 72px !important;
+          }
+          form input,
+          form select,
+          form textarea {
+            font-size: 0.65rem !important;
+          }
+          form input::placeholder,
+          form select::placeholder,
+          form textarea::placeholder {
+            font-size: 0.65rem !important;
           }
         }
         .react-international-phone-country-selector-dropdown {
@@ -9303,7 +9325,7 @@ const App = () => {
       )}
 
 
-      <div className="relative z-10 w-full overflow-y-auto md:overflow-y-visible h-screen md:h-auto" style={{ backgroundColor: '#F9F9F9' }}>
+      <div className="relative z-10 w-full overflow-y-auto md:overflow-y-visible md:h-auto" style={{ backgroundColor: '#F9F9F9' }}>
         {/* Logo and Tagline Section - Below Nav Bar */}
         <div className="w-full relative z-10 py-4 md:py-0" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
           <div className="w-full flex items-center" style={{ gap: '12px' }}>
