@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SESH",
+  "name": "SESH - The Next Generation of Social Media",
   "icons": [
     {
       "src": "SESH_Isotype 1.svg",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#A659FF",
+  "background_color": "#F9F9F9"
 }
