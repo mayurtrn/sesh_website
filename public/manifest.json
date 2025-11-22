@@ -1,6 +1,6 @@
 {
   "short_name": "SESH",
-  "name": "SESH - The Next Generation of Social Media",
+  "name": "SESH - THE NEXT GENERATION OF SOCIAL MEDIA",
   "icons": [
     {
       "src": "SESH_Isotype 1.svg",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#A659FF",
+  "theme_color": "#F9F9F9",
   "background_color": "#F9F9F9"
 }
