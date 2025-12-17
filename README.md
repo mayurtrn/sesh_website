@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# SESH - The Next Generation of Social Media
+
+Swipe, Invite, and Plan your social events effortlessly.
+
+---
+
+## About
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
