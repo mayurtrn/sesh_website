@@ -1,21 +1,21 @@
 {
   "short_name": "SESH",
-  "name": "SESH - THE NEXT GENERATION OF SOCIAL MEDIA",
+  "name": "SESH Dating - Social Events & Dating App",
   "icons": [
     {
-      "src": "SESH_Isotype 1.svg",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "SESHappicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "SESHappicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
     },
     {
       "src": "SESH_Isotype 1.svg",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "SESH_Isotype 1.svg",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ],
   "start_url": ".",
