@@ -7642,7 +7642,7 @@
 //   useEffect(() => {
 //     const fetchInitialCount = async () => {
 //       try {
-//         const response = await fetch('http://127.0.0.1:8000/api/current-count/');
+//         const response = await fetch('https://django.sesh.one/api/current-count/');
 //         if (response.ok) {
 //           const data = await response.json();
 //           setUserCount(data.count || 0);
@@ -7671,7 +7671,7 @@
 //         // After 1 second, perform the increment via API
 //         const incrementTimeout = setTimeout(async () => {
 //           try {
-//             const response = await fetch('http://127.0.0.1:8000/api/increment-count/', {
+//             const response = await fetch('https://django.sesh.one/api/increment-count/', {
 //               method: 'POST',
 //               headers: {
 //                 'Content-Type': 'application/json',
