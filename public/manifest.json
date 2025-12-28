@@ -3,12 +3,12 @@
   "name": "SESH Dating - Social Events & Dating App",
   "icons": [
     {
-      "src": "SESHappicon.png",
+      "src": "sesh-icon-v2.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "SESHappicon.png",
+      "src": "sesh-icon-v2.png",
       "sizes": "512x512",
       "type": "image/png"
     },
