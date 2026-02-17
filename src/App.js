@@ -478,7 +478,7 @@ const ContactForm = () => {
         <div className="flex justify-center" style={{ marginTop: '4px' }}>
           <button
             type="submit"
-            className="bg-purple-500 text-white px-32 py-3 rounded-lg hover:bg-purple-600 transition-colors font-nunito font-bold italic"
+            className="bg-purple-500 text-white px-32 py-2 rounded-lg hover:bg-purple-600 transition-colors font-nunito font-bold italic"
           >
             SUBMIT
           </button>
@@ -1104,8 +1104,8 @@ const App = () => {
 
               {/* How to Sesh Cards and Form Layout */}
               <div className="w-full">
-                {/* App Store Banners - order-1 on mobile, full width on top */}
-                <div className="flex flex-row items-stretch gap-2 mb-4 w-full md:w-1/2 md:ml-auto">
+                {/* App Store Banners - MOBILE ONLY (shows first on mobile) */}
+                <div className="flex md:hidden flex-row items-stretch gap-2 mb-4 w-full">
                   <a
                     href="https://apps.apple.com/us/app/the-sesh-app/id1671947382"
                     target="_blank"
@@ -1133,16 +1133,16 @@ const App = () => {
                 </div>
 
                 {/* Cards and Form Grid */}
-                <div className="flex flex-col md:grid md:grid-cols-2 md:gap-3 md:gap-4 lg:gap-6">
+                <div className="flex flex-col md:grid md:grid-cols-2 md:gap-3 md:gap-4 lg:gap-6 mb-4 sm:mb-6 md:mb-8">
                   {/* How to Sesh Cards */}
-                  <div className="md:col-span-1 md:self-stretch order-1 mb-4 sm:mb-6 md:mb-8 flex flex-col">
+                  <div className="md:col-span-1 h-full order-1 flex flex-col mb-4 md:mb-0">
                     <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 flex-1">
                       {/* SWIPE Card */}
                       <div className="flex flex-col items-center h-full">
-                        <div className="rounded-xl p-2 sm:p-3 md:p-4 lg:p-5 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
-                          <h3 className="text-[#4A4A4A] text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 text-center font-nunito"><em>SWIPE</em></h3>
-                          <div className="mb-1 sm:mb-2 flex justify-center">
-                            <img src="/left and right swipe.svg" alt="Swipe Left and Right" className="w-16 h-8 sm:w-28 sm:h-14 md:w-32 md:h-16 lg:w-40 lg:h-20 object-contain" />
+                        <div className="rounded-xl p-2 sm:p-3 md:p-8 lg:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
+                          <h3 className="text-[#4A4A4A] text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 md:mb-4 text-center font-nunito"><em>SWIPE</em></h3>
+                          <div className="mb-1 sm:mb-2 md:mb-4 flex justify-center">
+                            <img src="/left and right swipe.svg" alt="Swipe Left and Right" className="w-16 h-8 sm:w-28 sm:h-14 md:w-48 md:h-28 lg:w-56 lg:h-32 object-contain" />
                           </div>
                           <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-[0.5rem] sm:text-base md:text-lg lg:text-xl uppercase">SWIPE LEFT FOR NO AND RIGHT FOR YES</p>
                         </div>
@@ -1150,10 +1150,10 @@ const App = () => {
 
                       {/* INVITE Card */}
                       <div className="flex flex-col items-center h-full">
-                        <div className="rounded-xl p-2 sm:p-3 md:p-4 lg:p-5 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
-                          <h3 className="text-[#4A4A4A] text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 text-center font-nunito"><em>INVITE</em></h3>
-                          <div className="mb-1 sm:mb-2">
-                            <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-8 h-8 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20" />
+                        <div className="rounded-xl p-2 sm:p-3 md:p-8 lg:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
+                          <h3 className="text-[#4A4A4A] text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 md:mb-4 text-center font-nunito"><em>INVITE</em></h3>
+                          <div className="mb-1 sm:mb-2 md:mb-4">
+                            <img src="/Onboarding_Invite 1.svg" alt="Invite" className="w-8 h-8 sm:w-14 sm:h-14 md:w-28 md:h-28 lg:w-32 lg:h-32" />
                           </div>
                           <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-[0.5rem] sm:text-base md:text-lg lg:text-xl uppercase">INVITE YOUR MATCH TO A SESH</p>
                         </div>
@@ -1161,10 +1161,10 @@ const App = () => {
 
                       {/* PLAN Card */}
                       <div className="flex flex-col items-center h-full">
-                        <div className="rounded-xl p-2 sm:p-3 md:p-4 lg:p-5 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
-                          <h3 className="text-[#4A4A4A] text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 text-center font-nunito"><em>PLAN</em></h3>
-                          <div className="mb-1 sm:mb-2">
-                            <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-8 h-8 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20" />
+                        <div className="rounded-xl p-2 sm:p-3 md:p-8 lg:p-10 flex flex-col items-center justify-center w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
+                          <h3 className="text-[#4A4A4A] text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 md:mb-4 text-center font-nunito"><em>PLAN</em></h3>
+                          <div className="mb-1 sm:mb-2 md:mb-4">
+                            <img src="/Onboarding_Chat 1.svg" alt="Chat" className="w-8 h-8 sm:w-14 sm:h-14 md:w-28 md:h-28 lg:w-32 lg:h-32" />
                           </div>
                           <p className="text-[#4A4A4A] text-center font-nunito font-bold italic text-[0.5rem] sm:text-base md:text-lg lg:text-xl uppercase whitespace-nowrap">PLAN THROUGH A CHAT<br />AND HAVE YOUR SESH</p>
                         </div>
@@ -1172,9 +1172,37 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* Contact Form */}
-                  <div className="md:col-span-1 flex flex-col h-full order-2 mb-4 sm:mb-6 md:mb-8">
-                    <div className="rounded-xl p-2 sm:p-2 md:p-3 w-full h-full" style={{ backgroundColor: '#EFEFEF' }}>
+                  {/* Contact Form with App Store Banners */}
+                  <div className="md:col-span-1 flex flex-col h-full order-2">
+                    {/* App Store Banners - DESKTOP ONLY */}
+                    <div className="hidden md:flex flex-row items-stretch gap-2 mb-4 w-full">
+                      <a
+                        href="https://apps.apple.com/us/app/the-sesh-app/id1671947382"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1"
+                      >
+                        <img
+                          src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                          alt="Download on the App Store"
+                          className="w-full h-full cursor-pointer hover:opacity-80 transition-opacity"
+                        />
+                      </a>
+                      <a
+                        href="https://play.google.com/store/apps/details?id=com.therealnetworkssss.sesh"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1"
+                      >
+                        <img
+                          src="/google-play-badge.png"
+                          alt="Get it on Google Play"
+                          className="w-full h-full cursor-pointer hover:opacity-80 transition-opacity"
+                        />
+                      </a>
+                    </div>
+                    {/* Contact Form */}
+                    <div className="rounded-xl p-2 sm:p-2 md:p-3 w-full flex-1" style={{ backgroundColor: '#EFEFEF' }}>
                       <ContactForm />
                     </div>
                   </div>
