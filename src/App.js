@@ -214,31 +214,26 @@ import './App.css';
 // 
 // export default Root;
 
-
-// --- NEW IMPLEMENTATION (STACK LAYOUT + GEOMETRIC BG) ---
+// --- NEW IMPLEMENTATION (BENTO GRID DESIGN) ---
 
 const FlipCard = ({ digit, isAnimating, isShuffling }) => {
   return (
-    <div className="relative w-10 sm:w-16 md:w-20 h-14 sm:h-24 md:h-32 bg-purple-600 rounded-lg sm:rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 mx-0.5 sm:mx-1">
-      <div className={`absolute inset-0 flex items-center justify-center backface-hidden ${isAnimating ? 'animate-flip' : ''}`}>
-        <span className={`text-white font-black font-nunito ${isShuffling ? 'animate-shuffle text-white/50' : ''}`}
-          style={{ fontSize: 'min(5rem, 8vw)', lineHeight: 1 }}>
-          {digit}
-        </span>
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none"></div>
-      <div className="absolute inset-x-0 top-1/2 h-0.5 bg-black/10"></div>
+    <div className="relative w-8 sm:w-16 md:w-20 h-12 sm:h-24 md:h-28 backdrop-blur-md rounded-lg sm:rounded-2xl border border-white/50 shadow-lg overflow-hidden flex items-center justify-center transform hover:scale-105 transition-all mx-0.5 sm:mx-1" style={{ backgroundColor: '#A659FF' }}>
+      {/* 3D tilt can be added via CSS on hover if desired, simplistic for now */}
+      <span className={`text-white font-black font-nunito text-3xl sm:text-6xl ${isShuffling ? 'animate-pulse text-white/50' : ''}`}>
+        {digit}
+      </span>
     </div>
   );
 };
 
-// ... (PrivacyPolicy and Contact components defined similarly to before)
+// ... (PrivacyPolicy and Contact components defined similarly minimalist)
 const PrivacyPolicy = () => {
   const [policyData, setPolicyData] = useState(null);
   const navigate = useNavigate();
   useEffect(() => { fetch('https://django.sesh.one/api/privacy-policy/').then(r => r.json()).then(d => { if (d.status === 200) setPolicyData(d.data) }); }, []);
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6 font-nunito relative z-10">
+    <div className="min-h-screen bg-gray-50 py-12 px-6 font-nunito">
       <button onClick={() => navigate('/')} className="mb-8 text-purple-600 font-black italic text-xl">← HOME</button>
       <div className="bg-white p-8 rounded-3xl shadow-xl">{policyData ? <div dangerouslySetInnerHTML={{ __html: policyData.description }} /> : 'Loading...'}</div>
     </div>
@@ -247,7 +242,7 @@ const PrivacyPolicy = () => {
 const Contact = () => {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 font-nunito relative z-10">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 font-nunito">
       <div className="bg-white p-8 rounded-3xl shadow-xl w-full max-w-lg text-center">
         <button onClick={() => navigate('/')} className="mb-4 text-purple-600 font-black italic">← HOME</button>
         <h1 className="text-3xl font-black italic mb-4">CONTACT</h1>
@@ -257,7 +252,6 @@ const Contact = () => {
   );
 };
 
-// --- Main App ---
 const App = () => {
   const [userCount, setUserCount] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -311,10 +305,11 @@ const App = () => {
     const formatted = `${countStr.slice(0, 1)},${countStr.slice(1, 4)},${countStr.slice(4)}`;
     const elements = [];
     let digitIndex = 0;
+
     for (let i = 0; i < formatted.length; i++) {
       const char = formatted[i];
       if (char === ',') {
-        elements.push(<span key={`comma-${i}`} className="text-purple-400 text-4xl sm:text-6xl font-black self-end pb-2 sm:pb-4 mx-1">,</span>);
+        elements.push(<span key={`comma-${i}`} className="text-purple-800 text-3xl sm:text-6xl font-black self-end pb-1 mx-0.5">,</span>);
       } else {
         const isAnimating = animatingIndices.has(digitIndex);
         const isShuffling = shufflingIndices.has(digitIndex);
@@ -328,105 +323,149 @@ const App = () => {
   };
 
   return (
-    <div className="h-screen w-screen bg-white overflow-hidden relative font-nunito flex flex-col items-center justify-between py-6 sm:py-8 lg:py-10">
+    <div className="min-h-screen bg-gray-100 overflow-hidden relative font-nunito p-4 sm:p-8 flex items-center justify-center">
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap');
         .font-nunito { font-family: 'Nunito', sans-serif !important; }
-        @keyframes flip {
-          0% { transform: rotateX(0deg); }
-          50% { transform: rotateX(-90deg); }
-          100% { transform: rotateX(0deg); }
-        }
-        .animate-flip { animation: flip 0.6s ease-in-out; transform-style: preserve-3d; }
-        @keyframes shuffle {
-            0% { opacity: 0; transform: translateY(-10px); }
-            50% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(10px); }
-        }
-        .animate-shuffle { animation: shuffle 0.2s infinite; }
         
-        /* GEOMETRIC BACKGROUND & GRID */
-        .grid-bg {
-            background-color: #fcfcfc;
-            background-image: linear-gradient(#e5e7eb 1px, transparent 1px),
-                              linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: moveGrid 20s linear infinite;
+
+        
+        /* Bento Tilt Effect */
+        .bento-card {
+            background: rgba(229, 231, 235, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        @keyframes moveGrid {
-            0% { background-position: 0 0; }
-            100% { background-position: 40px 40px; }
+        .bento-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(124, 58, 237, 0.15);
+            border-color: rgba(167, 139, 250, 0.5);
+            z-index: 10;
         }
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
+        
+        /* 3D Flip Utilities */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        
+        .flipper-content {
+          width: 100%;
+          height: 100%;
+          transition: transform 0.6s;
+          transform-style: preserve-3d;
         }
-        .animate-blob { animation: blob 7s infinite; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
+        
+        .group:hover .flipper-content {
+          transform: rotateY(180deg);
+        }
+        
+        /* Ensure hover state persists during transform */
+        .group {
+          perspective: 1000px;
+          cursor: pointer;
+        }
       `}</style>
 
-      {/* Dynamic Background with Grid */}
-      <div className="absolute inset-0 w-full h-full grid-bg z-0"></div>
-      <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
-      <div className="absolute top-0 -right-4 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
+      {/* Background */}
+      <div className="absolute inset-0 w-full h-full bg-gray-50 z-0"></div>
+      <div className="absolute top-10 left-10 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
 
-      {/* HEADER SECTION */}
-      <div className="relative z-10 text-center flex-shrink-0">
-        <div className="flex items-center justify-center space-x-2 mb-2">
-          <h1 className="text-purple-600 font-black italic tracking-tighter text-6xl sm:text-7xl md:text-8xl leading-none">SESH</h1>
-          <img src="/SESH_Isotype 1.svg" alt="Icon" className="h-14 sm:h-20 w-auto transform -rotate-12" />
+      {/* Bento Grid Container */}
+      <div className="relative z-10 w-full max-w-7xl h-full sm:h-auto grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 sm:gap-6">
+
+        {/* 1. HERO CELL (Large Left Panel) */}
+        <div className="bento-card md:col-span-2 md:row-span-3 p-6 sm:p-12 flex flex-col justify-start items-start text-left bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200">
+          <div className="flex items-center gap-4 mb-6">
+            <h1 className="text-5xl sm:text-8xl font-black italic text-purple-600 tracking-tighter">SESH</h1>
+            <img src="/SESH_Isotype 1.svg" alt="Sesh" className="h-16 sm:h-24" />
+          </div>
+          <div className="mt-4">
+            <h2 className="text-2xl sm:text-5xl font-extrabold italic text-gray-600 leading-tight uppercase mb-4">
+              The world is your oyster, <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-900 to-[#A659FF]">Go Find Your Pearls</span>
+            </h2>
+            <p className="text-gray-400 font-bold tracking-widest uppercase text-xs">Join the movement</p>
+            <div className="flex flex-col sm:flex-row mt-8 w-full max-w-lg items-center gap-4">
+              <a href="https://apps.apple.com/us/app/the-sesh-app/id1671947382" target="_blank" rel="noopener noreferrer" className="flex-1 w-full hover:scale-105 transition-transform flex justify-center sm:justify-start">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" className="h-auto w-auto" style={{ height: '68px' }} />
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.therealnetworkssss.sesh" target="_blank" rel="noopener noreferrer" className="flex-1 w-full hover:scale-105 transition-transform flex justify-center sm:justify-start">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" className="h-[4.25rem] w-auto" style={{ marginTop: '-5px' }} />
+              </a>
+            </div>
+          </div>
         </div>
-        <h2 className="text-gray-800 font-extrabold italic uppercase tracking-wide text-xl sm:text-2xl md:text-4xl max-w-4xl mx-auto leading-tight px-4 shadow-sm">
-          The world is your oyster, <span className="text-purple-600">go find your pearls</span>
-        </h2>
-      </div>
 
-      {/* COUNTER SECTION */}
-      <div className="relative z-10 flex-shrink-0 my-auto">
-        <div className="bg-white/60 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-xl">
-          <div className="flex justify-center items-center">
+        {/* 2. COUNTER CELL (Wide Top Right) */}
+        <div className="bento-card md:col-span-2 md:row-span-1 p-6 flex flex-col items-center justify-center bg-gray-200/60">
+          <div className="flex gap-1 justify-center scale-90 sm:scale-100 origin-center w-full">
             {renderFlipCounter()}
           </div>
-          <p className="text-center text-gray-400 text-xs font-bold tracking-[0.3em] uppercase mt-4">Active Users</p>
+          <p className="mt-2 text-xs font-black tracking-[0.4em] text-gray-400 uppercase">Active Users</p>
         </div>
-      </div>
 
-      {/* FEATURES ROW (Compact) */}
-      <div className="relative z-10 w-full max-w-6xl px-4 grid grid-cols-3 gap-4 sm:gap-8 flex-shrink-0">
-        {[
-          { title: "SWIPE", sub: "SWIPE LEFT FOR NO, RIGHT FOR YES", img: "/left and right swipe.svg" },
-          { title: "INVITE", sub: "INVITE YOUR MATCH TO A SESH", img: "/Onboarding_Invite 1.svg" },
-          { title: "PLAN", sub: "PLAN THROUGH A CHAT AND HAVE YOUR SESH", img: "/Onboarding_Chat 1.svg" }
-        ].map((item, i) => (
-          <div key={i} className="flex flex-col items-center text-center group">
-            <div className="bg-white/80 p-4 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 mb-3 w-full max-w-[180px] aspect-square flex items-center justify-center transform group-hover:-translate-y-1">
-              <img src={item.img} alt={item.title} className="w-12 h-12 sm:w-16 sm:h-16 object-contain group-hover:scale-110 transition-transform" />
+        {/* 3. FEATURE: SWIPE */}
+        <div className="md:col-span-1 md:row-span-1 group perspective-1000 h-full relative cursor-pointer min-h-[220px] md:min-h-0">
+          <div className="absolute inset-0 z-50"></div>
+          <div className="flipper-content">
+            {/* Front */}
+            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden">
+              <img src="/left and right swipe.svg" className="h-16 mb-4" />
+              <h3 className="text-3xl font-black italic text-gray-600">SWIPE</h3>
             </div>
-            <h3 className="text-gray-900 font-black italic text-lg sm:text-xl tracking-wider mb-1">{item.title}</h3>
-            <p className="text-gray-500 font-bold text-[0.6rem] sm:text-xs uppercase tracking-wide hidden sm:block max-w-[150px]">{item.sub}</p>
+            {/* Back */}
+            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 bg-purple-100/90 text-gray-600 border-2 border-purple-300">
+              <p className="font-bold text-lg leading-tight px-4 uppercase">swipe left for no and right for yes</p>
+            </div>
           </div>
-        ))}
+        </div>
+
+        {/* 4. FEATURE: INVITE */}
+        <div className="md:col-span-1 md:row-span-1 group perspective-1000 h-full relative cursor-pointer min-h-[220px] md:min-h-0">
+          <div className="absolute inset-0 z-50"></div>
+          <div className="flipper-content">
+            {/* Front */}
+            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden">
+              <img src="/Onboarding_Invite 1.svg" className="h-16 mb-4" />
+              <h3 className="text-3xl font-black italic text-gray-600">INVITE</h3>
+            </div>
+            {/* Back */}
+            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 bg-purple-100/90 text-gray-600 border-2 border-purple-300">
+              <p className="font-bold text-lg leading-tight px-4 uppercase">invite your match to a SESH</p>
+            </div>
+          </div>
+        </div>
+
+        {/* 5. FEATURE: PLAN */}
+        <div className="md:col-span-2 md:row-span-1 group perspective-1000 mx-auto w-full md:w-[48%] h-full relative cursor-pointer min-h-[220px] md:min-h-0">
+          <div className="absolute inset-0 z-50"></div>
+          <div className="flipper-content">
+            {/* Front */}
+            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden">
+              <img src="/Onboarding_Chat 1.svg" className="h-16 mb-4" />
+              <h3 className="text-3xl font-black italic text-gray-600">PLAN</h3>
+            </div>
+            {/* Back */}
+            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 bg-purple-100/90 text-gray-600 border-2 border-purple-300">
+              <p className="font-bold text-lg leading-tight px-4 uppercase">plan through a chat and have your SESH</p>
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
 
-      {/* FOOTER / DOWNLOADS */}
-      <div className="relative z-10 flex-shrink-0 flex flex-col items-center gap-4 mt-4 mb-4">
-        <div className="flex gap-4">
-          <a href="https://apps.apple.com/us/app/the-sesh-app/id1671947382" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform">
-            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" className="h-10 sm:h-12 md:h-14" />
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.therealnetworkssss.sesh" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform">
-            <img src="/google-play-badge.png" alt="Google Play" className="h-10 sm:h-12 md:h-14" />
-          </a>
-        </div>
-        <div className="text-gray-300 text-[10px] font-bold tracking-widest flex gap-6">
-          {/* <Link to="/privacy-policy" className="hover:text-purple-500 transition-colors">PRIVACY</Link>
-          <Link to="/contact" className="hover:text-purple-500 transition-colors">CONTACT</Link> */}
-        </div>
-      </div>
+      {/* Footer Links */}
+      {/* <div className="absolute bottom-4 left-0 right-0 text-center text-[10px] font-bold text-gray-400 tracking-widest uppercase flex justify-center gap-6">
+        <Link to="/privacy-policy" className="hover:text-purple-600">Privacy</Link>
+        <Link to="/contact" className="hover:text-purple-600">Contact</Link>
+      </div> */}
 
     </div>
   );
@@ -436,8 +475,8 @@ const Root = () => (
   <Router>
     <Routes>
       <Route path="/" element={<App />} />
-      {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/contact" element={<Contact />} /> */}
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   </Router>
 );
