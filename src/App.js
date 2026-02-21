@@ -342,7 +342,6 @@ const App = () => {
         .bento-card:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 20px 40px -10px rgba(124, 58, 237, 0.15);
-            border-color: rgba(167, 139, 250, 0.5);
             z-index: 10;
         }
         
@@ -406,7 +405,7 @@ const App = () => {
           <div className="flex gap-1 justify-center scale-90 sm:scale-100 origin-center w-full">
             {renderFlipCounter()}
           </div>
-          <p className="mt-2 text-xs font-black tracking-[0.4em] text-gray-400 uppercase">Active Users</p>
+          <p className="mt-4 text-xs font-black tracking-[0.4em] text-gray-400 uppercase">Active Users</p>
         </div>
 
         {/* 3. FEATURE: SWIPE */}
