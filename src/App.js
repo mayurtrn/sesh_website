@@ -218,9 +218,9 @@ import './App.css';
 
 const FlipCard = ({ digit, isAnimating, isShuffling }) => {
   return (
-    <div className="relative w-8 sm:w-16 md:w-20 h-12 sm:h-24 md:h-28 backdrop-blur-md rounded-lg sm:rounded-2xl border border-white/50 shadow-lg overflow-hidden flex items-center justify-center transform hover:scale-105 transition-all mx-0.5 sm:mx-1" style={{ backgroundColor: '#A659FF' }}>
+    <div className="relative w-12 sm:w-16 md:w-20 h-16 sm:h-24 md:h-28 bg-gray-300 backdrop-blur-md rounded-lg sm:rounded-2xl shadow-lg overflow-hidden flex items-center justify-center transform hover:scale-105 transition-all mx-0.5 sm:mx-1">
       {/* 3D tilt can be added via CSS on hover if desired, simplistic for now */}
-      <span className={`text-white font-black font-nunito text-3xl sm:text-6xl ${isShuffling ? 'animate-pulse text-white/50' : ''}`}>
+      <span className={`font-black font-nunito text-4xl sm:text-6xl ${isShuffling ? 'animate-pulse opacity-50' : ''}`} style={{ color: '#A659FF' }}>
         {digit}
       </span>
     </div>
@@ -309,7 +309,7 @@ const App = () => {
     for (let i = 0; i < formatted.length; i++) {
       const char = formatted[i];
       if (char === ',') {
-        elements.push(<span key={`comma-${i}`} className="text-purple-800 text-3xl sm:text-6xl font-black self-end pb-1 mx-0.5">,</span>);
+        elements.push(<span key={`comma-${i}`} className="text-purple-800 text-4xl sm:text-6xl font-black self-end pb-1 mx-0.5">,</span>);
       } else {
         const isAnimating = animatingIndices.has(digitIndex);
         const isShuffling = shufflingIndices.has(digitIndex);
@@ -335,7 +335,6 @@ const App = () => {
             background: rgba(229, 231, 235, 0.9);
             backdrop-filter: blur(20px);
             border-radius: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -378,22 +377,22 @@ const App = () => {
       <div className="relative z-10 w-full max-w-7xl h-full sm:h-auto grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 sm:gap-6">
 
         {/* 1. HERO CELL (Large Left Panel) */}
-        <div className="bento-card md:col-span-2 md:row-span-3 p-6 sm:p-12 flex flex-col justify-start items-start text-left bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200">
-          <div className="flex items-center gap-4 mb-6">
+        <div className="bento-card md:col-span-2 md:row-span-3 p-6 sm:p-12 flex flex-col justify-start items-start text-left bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 w-[85%] md:w-full mx-auto">
+          <div className="flex items-center gap-4 mb-2 sm:mb-6">
             <h1 className="text-5xl sm:text-8xl font-black italic text-purple-600 tracking-tighter">SESH</h1>
             <img src="/SESH_Isotype 1.svg" alt="Sesh" className="h-16 sm:h-24" />
           </div>
-          <div className="mt-4">
+          <div className="mt-0 sm:mt-4">
             <h2 className="text-2xl sm:text-5xl font-extrabold italic text-gray-600 leading-tight uppercase mb-4">
               The world is your oyster, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-900 to-[#A659FF]">Go Find Your Pearls</span>
             </h2>
             <p className="text-gray-400 font-bold tracking-widest uppercase text-xs">Join the movement</p>
-            <div className="flex flex-col sm:flex-row mt-8 w-full max-w-lg items-center gap-4">
-              <a href="https://apps.apple.com/us/app/the-sesh-app/id1671947382" target="_blank" rel="noopener noreferrer" className="flex-1 w-full hover:scale-105 transition-transform flex justify-center sm:justify-start">
+            <div className="flex flex-col sm:flex-row mt-8 w-full max-w-lg items-start sm:items-center gap-4">
+              <a href="https://apps.apple.com/us/app/the-sesh-app/id1671947382" target="_blank" rel="noopener noreferrer" className="flex-1 w-full hover:scale-105 transition-transform flex justify-start">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" className="h-auto w-auto" style={{ height: '68px' }} />
               </a>
-              <a href="https://play.google.com/store/apps/details?id=com.therealnetworkssss.sesh" target="_blank" rel="noopener noreferrer" className="flex-1 w-full hover:scale-105 transition-transform flex justify-center sm:justify-start">
+              <a href="https://play.google.com/store/apps/details?id=com.therealnetworkssss.sesh" target="_blank" rel="noopener noreferrer" className="flex-1 w-full hover:scale-105 transition-transform flex justify-start">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" className="h-[4.25rem] w-auto" style={{ marginTop: '-5px' }} />
               </a>
             </div>
@@ -401,7 +400,7 @@ const App = () => {
         </div>
 
         {/* 2. COUNTER CELL (Wide Top Right) */}
-        <div className="bento-card md:col-span-2 md:row-span-1 p-6 flex flex-col items-center justify-center bg-gray-200/60">
+        <div className="bento-card md:col-span-2 md:row-span-1 p-6 flex flex-col items-center justify-center bg-gray-200/60 w-[85%] md:w-full mx-auto">
           <div className="flex gap-1 justify-center scale-90 sm:scale-100 origin-center w-full">
             {renderFlipCounter()}
           </div>
@@ -409,7 +408,7 @@ const App = () => {
         </div>
 
         {/* 3. FEATURE: SWIPE */}
-        <div className="md:col-span-1 md:row-span-1 group perspective-1000 h-full relative cursor-pointer min-h-[220px] md:min-h-0">
+        <div className="md:col-span-1 md:row-span-1 group perspective-1000 h-full relative cursor-pointer min-h-[220px] md:min-h-0 w-[85%] md:w-full mx-auto">
           <div className="absolute inset-0 z-50"></div>
           <div className="flipper-content">
             {/* Front */}
@@ -418,14 +417,14 @@ const App = () => {
               <h3 className="text-3xl font-black italic text-gray-600">SWIPE</h3>
             </div>
             {/* Back */}
-            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 bg-purple-100/90 text-gray-600 border-2 border-purple-300">
+            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 bg-purple-100/90 text-gray-600">
               <p className="font-bold text-lg leading-tight px-4 uppercase">swipe left for no and right for yes</p>
             </div>
           </div>
         </div>
 
         {/* 4. FEATURE: INVITE */}
-        <div className="md:col-span-1 md:row-span-1 group perspective-1000 h-full relative cursor-pointer min-h-[220px] md:min-h-0">
+        <div className="md:col-span-1 md:row-span-1 group perspective-1000 h-full relative cursor-pointer min-h-[220px] md:min-h-0 w-[85%] md:w-full mx-auto">
           <div className="absolute inset-0 z-50"></div>
           <div className="flipper-content">
             {/* Front */}
@@ -434,14 +433,14 @@ const App = () => {
               <h3 className="text-3xl font-black italic text-gray-600">INVITE</h3>
             </div>
             {/* Back */}
-            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 bg-purple-100/90 text-gray-600 border-2 border-purple-300">
+            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 bg-purple-100/90 text-gray-600">
               <p className="font-bold text-lg leading-tight px-4 uppercase">invite your match to a SESH</p>
             </div>
           </div>
         </div>
 
         {/* 5. FEATURE: PLAN */}
-        <div className="md:col-span-2 md:row-span-1 group perspective-1000 mx-auto w-full md:w-[48%] h-full relative cursor-pointer min-h-[220px] md:min-h-0">
+        <div className="md:col-span-2 md:row-span-1 group perspective-1000 mx-auto w-[85%] md:w-[48%] h-full relative cursor-pointer min-h-[220px] md:min-h-0">
           <div className="absolute inset-0 z-50"></div>
           <div className="flipper-content">
             {/* Front */}
@@ -450,7 +449,7 @@ const App = () => {
               <h3 className="text-3xl font-black italic text-gray-600">PLAN</h3>
             </div>
             {/* Back */}
-            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 bg-purple-100/90 text-gray-600 border-2 border-purple-300">
+            <div className="absolute inset-0 bento-card flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 bg-purple-100/90 text-gray-600">
               <p className="font-bold text-lg leading-tight px-4 uppercase">plan through a chat and have your SESH</p>
             </div>
           </div>
