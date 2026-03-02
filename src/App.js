@@ -217,12 +217,44 @@ import './App.css';
 // --- NEW IMPLEMENTATION (BENTO GRID DESIGN) ---
 
 const FlipCard = ({ digit, isAnimating, isShuffling }) => {
+  const [displayDigit, setDisplayDigit] = useState(digit);
+
+  useEffect(() => {
+    let interval;
+    if (isShuffling) {
+      interval = setInterval(() => {
+        setDisplayDigit(Math.floor(Math.random() * 10).toString());
+      }, 50); // fast shuffle
+    } else {
+      setDisplayDigit(digit);
+    }
+    return () => clearInterval(interval);
+  }, [isShuffling, digit]);
+
+  const animClass = isAnimating ? 'animate-flap-down' : (isShuffling ? 'animate-flap-shuffle' : '');
+
   return (
-    <div className="relative w-12 sm:w-16 md:w-20 h-16 sm:h-24 md:h-28 bg-gray-300 backdrop-blur-md rounded-lg sm:rounded-2xl shadow-lg overflow-hidden flex items-center justify-center transform hover:scale-105 transition-all mx-0.5 sm:mx-1">
-      {/* 3D tilt can be added via CSS on hover if desired, simplistic for now */}
-      <span className={`font-black font-nunito text-4xl sm:text-6xl ${isShuffling ? 'animate-pulse opacity-50' : ''}`} style={{ color: '#A659FF' }}>
-        {digit}
-      </span>
+    <div className="relative w-12 sm:w-16 md:w-20 h-16 sm:h-24 md:h-28 rounded-lg sm:rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 mx-0.5 sm:mx-1 bg-gray-200" style={{ perspective: '300px' }}>
+
+      {/* Base Background (Stationary) */}
+      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center pointer-events-none">
+        <span className="inline-block font-black font-nunito text-4xl sm:text-6xl" style={{ color: '#A659FF' }}>
+          {displayDigit}
+        </span>
+      </div>
+
+      {/* Flipping Flap (Overlays the base) */}
+      <div className={`absolute inset-0 bg-gray-200 flex items-center justify-center pointer-events-none ${animClass}`}>
+        <span className="inline-block font-black font-nunito text-4xl sm:text-6xl" style={{ color: '#A659FF' }}>
+          {displayDigit}
+        </span>
+      </div>
+
+      {/* Glossy overlay mimicking a physical flap */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent pointer-events-none rounded-lg sm:rounded-2xl z-20"></div>
+
+      {/* Horizontal divider line for billboard split-flap look */}
+      <div className="absolute inset-x-0 top-1/2 h-px sm:h-0.5 bg-black/10 z-30 pointer-events-none"></div>
     </div>
   );
 };
@@ -359,6 +391,20 @@ const App = () => {
         
         .group:hover .flipper-content {
           transform: rotateY(180deg);
+        }
+        
+        /* Billboard Flap Animation */
+        @keyframes flap-down {
+          0% { transform: rotateX(-90deg); filter: brightness(0.7); }
+          100% { transform: rotateX(0deg); filter: brightness(1); }
+        }
+        .animate-flap-down {
+          animation: flap-down 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+          transform-origin: center;
+        }
+        .animate-flap-shuffle {
+          animation: flap-down 0.08s linear infinite;
+          transform-origin: center;
         }
         
         /* Ensure hover state persists during transform */
