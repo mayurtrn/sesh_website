@@ -250,8 +250,7 @@ const FlipCard = ({ digit, isAnimating, isShuffling }) => {
         </span>
       </div>
 
-      {/* Glossy overlay mimicking a physical flap */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent pointer-events-none rounded-lg sm:rounded-2xl z-20"></div>
+
 
       {/* Horizontal divider line for billboard split-flap look */}
       <div className="absolute inset-x-0 top-1/2 h-px sm:h-0.5 bg-black/10 z-30 pointer-events-none"></div>
@@ -395,8 +394,8 @@ const App = () => {
         
         /* Billboard Flap Animation */
         @keyframes flap-down {
-          0% { transform: rotateX(-90deg); filter: brightness(0.7); }
-          100% { transform: rotateX(0deg); filter: brightness(1); }
+          0% { transform: rotateX(-90deg); }
+          100% { transform: rotateX(0deg); }
         }
         .animate-flap-down {
           animation: flap-down 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
