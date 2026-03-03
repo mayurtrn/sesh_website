@@ -234,26 +234,24 @@ const FlipCard = ({ digit, isAnimating, isShuffling }) => {
   const animClass = isAnimating ? 'animate-flap-down' : (isShuffling ? 'animate-flap-shuffle' : '');
 
   return (
-    <div className="relative w-16 sm:w-16 md:w-20 h-20 sm:h-24 md:h-28 rounded-lg sm:rounded-2xl overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 mx-0.5 sm:mx-1 bg-gray-200" style={{ perspective: '300px' }}>
+    <div className="relative w-11 sm:w-16 md:w-20 h-16 sm:h-24 md:h-28 rounded-lg sm:rounded-2xl overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 mx-0.5 sm:mx-1" style={{ perspective: '300px' }}>
 
       {/* Base Background (Stationary) */}
-      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center pointer-events-none">
-        <span className="inline-block font-black font-nunito text-5xl sm:text-6xl" style={{ color: '#A659FF' }}>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <span className="inline-block font-black font-nunito text-4xl sm:text-6xl" style={{ color: '#A659FF' }}>
           {displayDigit}
         </span>
       </div>
 
       {/* Flipping Flap (Overlays the base) */}
-      <div className={`absolute inset-0 bg-gray-200 flex items-center justify-center pointer-events-none ${animClass}`}>
-        <span className="inline-block font-black font-nunito text-5xl sm:text-6xl" style={{ color: '#A659FF' }}>
+      <div className={`absolute inset-0 flex items-center justify-center pointer-events-none ${animClass}`}>
+        <span className="inline-block font-black font-nunito text-4xl sm:text-6xl" style={{ color: '#A659FF' }}>
           {displayDigit}
         </span>
       </div>
 
 
 
-      {/* Horizontal divider line for billboard split-flap look */}
-      <div className="absolute inset-x-0 top-1/2 h-px sm:h-0.5 bg-black/10 z-30 pointer-events-none"></div>
     </div>
   );
 };
@@ -340,7 +338,7 @@ const App = () => {
     for (let i = 0; i < formatted.length; i++) {
       const char = formatted[i];
       if (char === ',') {
-        elements.push(<span key={`comma-${i}`} className="text-purple-800 text-5xl sm:text-6xl font-black self-end pb-1 mx-0.5">,</span>);
+        elements.push(<span key={`comma-${i}`} className="text-purple-800 text-4xl sm:text-6xl font-black self-end pb-1 mx-0.5">,</span>);
       } else {
         const isAnimating = animatingIndices.has(digitIndex);
         const isShuffling = shufflingIndices.has(digitIndex);
@@ -411,6 +409,17 @@ const App = () => {
           perspective: 1000px;
           cursor: pointer;
         }
+        
+        /* Counter row scaling */
+        .counter-row {
+          transform: scale(0.78);
+          transform-origin: center;
+        }
+        @media (min-width: 640px) {
+          .counter-row {
+            transform: scale(1);
+          }
+        }
       `}</style>
 
       {/* Background */}
@@ -445,8 +454,8 @@ const App = () => {
         </div>
 
         {/* 2. COUNTER CELL (Wide Top Right) */}
-        <div className="bento-card md:col-span-2 md:row-span-1 p-6 flex flex-col items-center justify-center bg-gray-200/60 w-[95%] md:w-full mx-auto">
-          <div className="flex gap-1 justify-center scale-90 sm:scale-100 origin-center w-full">
+        <div className="bento-card md:col-span-2 md:row-span-1 p-6 flex flex-col items-center justify-center bg-gray-200/60 w-[85%] md:w-full mx-auto">
+          <div className="flex gap-1 justify-center w-full counter-row">
             {renderFlipCounter()}
           </div>
           <p className="mt-4 text-xs font-black tracking-[0.4em] text-gray-400 uppercase">Active Users</p>
